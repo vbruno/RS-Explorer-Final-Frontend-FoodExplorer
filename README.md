@@ -15,7 +15,7 @@ os conhecimentos adquiridos no curso da Rocketseat na modalidade EXPLORER.
 
 ## Repositório
 
-* [GitHub](https://github.com/vbruno/)
+* [GitHub](https://github.com/vbruno/RS-Explorer-Final-Frontend-FoodExplorer)
 
 ## 🛠 Tecnologias
 
