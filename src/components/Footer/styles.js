@@ -12,7 +12,7 @@ export const Container = styled.footer`
 
   background: ${({ theme }) => theme.COLORS.DARK_600};
 
-  > div {
+  > h1 {
     display: flex;
     align-items: center;
     gap: 10px;
