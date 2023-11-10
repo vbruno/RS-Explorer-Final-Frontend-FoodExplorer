@@ -23,4 +23,13 @@ export const Container = styled.button`
   font-style: normal;
   font-weight: 500;
   line-height: 24px; /* 171.429% */
+
+  &:hover {
+    background: ${({ theme }) => theme.COLORS.TOMATO_200};
+  }
+
+  &:disabled {
+    background: ${({ theme }) => theme.COLORS.TOMATO_400};
+    cursor: not-allowed;
+  }
 `;
