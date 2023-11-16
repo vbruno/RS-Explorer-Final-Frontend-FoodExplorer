@@ -5,18 +5,22 @@ export const Container = styled.header`
 
   padding: 2.4rem 12.3rem;
 
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  gap: 3.2rem;
-
   background: ${({ theme }) => theme.COLORS.DARK_600};
 
-  > h1 {
+  > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 3.2rem;
+  }
+
+  h1 {
     width: 18.6rem;
 
     display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
     align-items: center;
     gap: 10px;
 

@@ -4,7 +4,7 @@ import { Counter } from "../Counter";
 import { Button } from "../Button";
 
 import IconHeart from "../../assets/icons/Heart.svg?react";
-import imgPrato from "../../assets/imgPrato02.png";
+import imgPrato from "../../assets/dishes/Mask_group-1.png";
 
 export function CardFood() {
   return (

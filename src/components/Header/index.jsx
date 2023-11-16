@@ -8,16 +8,18 @@ import { Button } from "../Button";
 export function Header() {
   return (
     <Container>
-      <h1>
-        {" "}
-        <Logo />
-        food explorer
-      </h1>
-      <Search />
-      <Button>Pedidos (0)</Button>
-      <button>
-        <IconSignOut />
-      </button>
+      <div>
+        <h1>
+          {" "}
+          <Logo />
+          food explorer
+        </h1>
+        <Search />
+        <Button>Pedidos (0)</Button>
+        <button>
+          <IconSignOut />
+        </button>
+      </div>
     </Container>
   );
 }
