@@ -8,18 +8,19 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 
+register();
+
 import GlobalStyle from "./styles/global";
 import theme from "./styles/theme";
 
-import { Home } from "./pages/Home";
-
-register();
+import { RouterProvider } from "react-router-dom";
+import { router } from "./routes";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <Home />
+      <RouterProvider router={router} />
     </ThemeProvider>
   </React.StrictMode>
 );

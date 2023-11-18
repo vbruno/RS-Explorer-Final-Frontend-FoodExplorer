@@ -1,7 +1,5 @@
 import { Container, Content, ContentHeader } from "./styles";
 
-import { Header } from "../../components/Header";
-import { Footer } from "../../components/Footer";
 import { ItemMenu } from "../../components/ItemMenu";
 
 import imgFood01 from "../../assets/imgFood01.png";
@@ -9,7 +7,6 @@ import imgFood01 from "../../assets/imgFood01.png";
 export function Home() {
   return (
     <Container>
-      <Header />
       <Content>
         <ContentHeader>
           <div>
@@ -25,7 +22,6 @@ export function Home() {
         <ItemMenu />
         <ItemMenu />
       </Content>
-      <Footer />
     </Container>
   );
 }

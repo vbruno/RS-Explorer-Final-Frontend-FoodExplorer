@@ -11,6 +11,8 @@ export const Content = styled.main`
   flex-direction: column;
   align-items: center;
 
+  padding: 0 12.3rem;
+
   overflow-y: auto;
 `;
 

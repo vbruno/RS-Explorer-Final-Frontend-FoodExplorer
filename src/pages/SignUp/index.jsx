@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { Container, Form } from "./styles";
 
 import imgLogo from "../../assets/logo.svg";
@@ -7,6 +8,12 @@ import { Button } from "../../components/Button";
 import { ButtonText } from "../../components/ButtonText";
 
 export function SignUp() {
+  const navigate = useNavigate();
+
+  function handleBack() {
+    navigate("/");
+  }
+
   return (
     <Container>
       <div>
@@ -31,7 +38,7 @@ export function SignUp() {
 
           <Button type="submit">Criar conta</Button>
 
-          <ButtonText>Já tenho uma conta</ButtonText>
+          <ButtonText onClick={handleBack}>Já tenho uma conta</ButtonText>
         </Form>
       </div>
     </Container>
