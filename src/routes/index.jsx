@@ -5,7 +5,8 @@ import {
 } from "react-router-dom";
 
 import { MainLayout } from "../layout/MainLayout";
-import { Home, Dish, SignIn, SignUp, ErrorPage } from "../pages";
+// eslint-disable-next-line
+import { Home, Dish, FormDish, SignIn, SignUp, ErrorPage } from "../pages";
 
 // export const router = createBrowserRouter([
 //   {
@@ -25,7 +26,7 @@ export const router = createBrowserRouter(
     <Route errorElement={<ErrorPage />}>
       {auth ? (
         <Route path="/" element={<MainLayout />}>
-          <Route path="/" element={<Dish />} />
+          <Route path="/" element={<FormDish />} />
         </Route>
       ) : (
         <Route path="/" element={<SignIn />} />
