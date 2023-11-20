@@ -1,12 +1,19 @@
+/** Material de Referencia:  https://www.radix-ui.com/primitives/docs/components/select */
+
+import { forwardRef } from "react";
+
 import {
   Container,
   SelectTrigger,
   SelectContent,
   SelectViewport,
+  StyledItem,
+  StyledItemIndicator,
 } from "./styles";
 import * as Select from "@radix-ui/react-select";
 
 import IconArrowDown from "./assets/ArrowDown.svg?react";
+import IconCheckItem from "./assets/ArrowCheck.svg?react";
 
 export function InputSelect({ title }) {
   return (
@@ -23,11 +30,9 @@ export function InputSelect({ title }) {
           <SelectContent>
             <SelectViewport>
               <Select.Group>
-                <SelectItem>oi</SelectItem>
-                <SelectItem>oi</SelectItem>
-                <SelectItem>oi</SelectItem>
-                <SelectItem>oi</SelectItem>
-                <SelectItem>oi</SelectItem>
+                <SelectItem value="Refeição">Refeições</SelectItem>
+                <SelectItem value="Sobremesa">Sobremesas</SelectItem>
+                <SelectItem value="Bebida">Bebidas</SelectItem>
               </Select.Group>
             </SelectViewport>
           </SelectContent>
@@ -37,12 +42,13 @@ export function InputSelect({ title }) {
   );
 }
 
-const SelectItem = React.forwardRef(({ children, ...props }, forwardedRef) => {
+// eslint-disable-next-line react/display-name
+const SelectItem = forwardRef(({ children, ...props }, forwardedRef) => {
   return (
     <StyledItem {...props} ref={forwardedRef}>
       <Select.ItemText>{children}</Select.ItemText>
       <StyledItemIndicator>
-        <CheckIcon />
+        <IconCheckItem />
       </StyledItemIndicator>
     </StyledItem>
   );

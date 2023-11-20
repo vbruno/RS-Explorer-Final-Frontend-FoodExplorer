@@ -57,15 +57,49 @@ export const SelectTrigger = styled(Select.Trigger)`
     width: 2.4rem;
     height: 2.4rem;
   }
+
+  &:hover {
+    background: ${({ theme }) => theme.COLORS.DARK_1000};
+  }
 `;
 
 export const SelectContent = styled(Select.Content)`
+  width: 100%;
   overflow: "hidden";
   background: ${({ theme }) => theme.COLORS.DARK_800};
+  border-radius: 8px;
 `;
 
 export const SelectViewport = styled(Select.Viewport)`
   padding: 5px;
 `;
 
-export const SelectItem = styled(Select.Item)``;
+export const StyledItem = styled(Select.Item)`
+  width: 100%;
+  height: 16px;
+  border-radius: 8px;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+
+  /* Roboto/Smaller regular */
+  font-family: Roboto;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 160%; /* 22.4px */
+
+  &[data-highlighted] {
+    /* outline: none; */
+    background-color: ${({ theme }) => theme.COLORS.DARK_1000};
+  }
+`;
+
+export const StyledItemIndicator = styled(Select.ItemIndicator)`
+  position: absolute;
+  left: 6px;
+  width: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;

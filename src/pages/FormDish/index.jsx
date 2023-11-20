@@ -18,7 +18,7 @@ export function FormDish() {
         <InputText title="Nome" placeholder="Ex.: Salada Ceasar" />
         <InputSelect title="Categoria" />
         <InputText title="Ingredientes" placeholder="Ex.: Salada Ceasar" />
-        <InputText title="Categoria" placeholder="Ex.: Salada Ceasar" />
+        <InputText title="Preço" placeholder="R$ 00,00" />
         <InputText title="Categoria" placeholder="Ex.: Salada Ceasar" />
         <Button>Salvar Alterações</Button>
       </Form>
