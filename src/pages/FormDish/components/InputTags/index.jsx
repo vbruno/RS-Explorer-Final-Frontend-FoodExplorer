@@ -1,10 +1,16 @@
 import { Container } from "./styles";
 
-export function InputTags({ title, ...rest }) {
+import { Tag } from "./components/Tag";
+
+export function InputTags({ title }) {
   return (
     <Container>
       <label>{title}</label>
-      <input type="text" {...rest} />
+      <section>
+        <Tag tagName={"alface"} />
+        <Tag tagName={"Tomate"} />
+        <Tag isNew />
+      </section>
     </Container>
   );
 }

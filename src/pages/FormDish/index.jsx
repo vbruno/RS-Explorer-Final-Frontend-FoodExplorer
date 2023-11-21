@@ -1,6 +1,6 @@
 import { Container, Form } from "./styles";
 import { Button } from "../../components";
-import { InputText, InputFile, InputSelect } from "./components";
+import { InputText, InputFile, InputSelect, InputTags } from "./components";
 
 import CareLeft from "../../assets/icons/CareLeft.svg?react";
 
@@ -17,7 +17,7 @@ export function FormDish() {
         <InputFile title="Imagem do prato" />
         <InputText title="Nome" placeholder="Ex.: Salada Ceasar" />
         <InputSelect title="Categoria" />
-        <InputText title="Ingredientes" placeholder="Ex.: Salada Ceasar" />
+        <InputTags title="Ingredientes" />
         <InputText title="Preço" placeholder="R$ 00,00" />
         <InputText title="Categoria" placeholder="Ex.: Salada Ceasar" />
         <Button>Salvar Alterações</Button>
