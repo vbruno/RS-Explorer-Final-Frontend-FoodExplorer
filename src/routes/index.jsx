@@ -19,7 +19,7 @@ import { Home, Dish, FormDish, SignIn, SignUp, ErrorPage } from "../pages";
 //   { path: "/signUp", element: <SignUp /> },
 // ]);
 
-const auth = 1;
+const auth = 0;
 
 export const router = createBrowserRouter(
   createRoutesFromElements(

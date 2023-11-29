@@ -1,5 +1,9 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+
 import { Container, Form } from "./styles";
+
+import { useAuth } from "../../Hooks/auth";
 
 import imgLogo from "../../assets/logo.svg";
 
@@ -9,10 +13,25 @@ import { ButtonText } from "../../components/ButtonText";
 
 export function SignIn() {
   const navigate = useNavigate();
+  const { signIn } = useAuth();
 
-  const handleSignIn = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+
+    const data = {
+      email,
+      password,
+    };
+
+    await signIn(data);
+  }
+
+  function handleSignIn() {
     navigate("/signUp");
-  };
+  }
 
   return (
     <Container>
@@ -21,15 +40,22 @@ export function SignIn() {
         <h1>food explorer</h1>
       </div>
       <div>
-        <Form>
+        <Form onSubmit={handleSubmit}>
           <h1>Faça login</h1>
 
           <InputText
             title={"Email"}
             placeholder={"Exemplo: exemplo@exemplo.com.br"}
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
           />
 
-          <InputText title={"Senha"} placeholder={"No mínimo 6 caracteres"} />
+          <InputText
+            title={"Senha"}
+            placeholder={"No mínimo 6 caracteres"}
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
+          />
 
           <Button type="submit">Entrar</Button>
 

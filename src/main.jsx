@@ -13,6 +13,8 @@ register();
 import GlobalStyle from "./styles/global";
 import theme from "./styles/theme";
 
+import { AuthProvider } from "./Hooks/auth";
+
 import { RouterProvider } from "react-router-dom";
 import { router } from "./routes";
 
@@ -20,7 +22,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <RouterProvider router={router} />
+      <AuthProvider>
+        <RouterProvider router={router} />
+      </AuthProvider>
     </ThemeProvider>
   </React.StrictMode>
 );
