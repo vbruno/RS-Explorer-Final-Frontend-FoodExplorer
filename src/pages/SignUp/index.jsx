@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+
 import { Container, Form } from "./styles";
+
+import { loginService } from "../../services/api/login/loginService";
 
 import imgLogo from "../../assets/logo.svg";
 
@@ -15,7 +18,7 @@ export function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
 
     if (password.length < 6) {
@@ -29,7 +32,17 @@ export function SignUp() {
       password: password.trim(),
     };
 
-    console.log(data);
+    const result = await loginService.register(data);
+
+    console.log(result);
+
+    if (result instanceof Error) {
+      alert(result);
+      return;
+    }
+
+    alert("Cadastro realizado com sucesso!");
+    navigate(-1);
   }
 
   function handleBack() {
