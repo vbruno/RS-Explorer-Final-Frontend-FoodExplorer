@@ -15,6 +15,17 @@ export const Container = styled.header`
     gap: 3.2rem;
   }
 
+  button:first-child {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 10px;
+
+    background: transparent;
+    border: none;
+  }
+
   h1 {
     width: 18.6rem;
 
@@ -22,8 +33,6 @@ export const Container = styled.header`
     flex-direction: row;
     flex-wrap: nowrap;
     align-items: center;
-    gap: 10px;
-
     color: ${({ theme }) => theme.COLORS.LIGHT_100};
 
     /* Roboto/Bigger bold */

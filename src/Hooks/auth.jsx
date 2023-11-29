@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react";
+import { jwtDecode } from "jwt-decode";
 
 import { loginService } from "../services/api/login/loginService";
 
@@ -29,10 +30,28 @@ export function AuthProvider({ children }) {
   }
 
   function signOut() {
-    localStorage.removeItem("@RocketNotes:user");
-    localStorage.removeItem("@RocketNotes:token");
+    localStorage.removeItem("@FoodExplorer:user");
+    localStorage.removeItem("@FoodExplorer:token");
 
     setData({});
+  }
+
+  function isAuthenticated() {
+    const storageUser = localStorage.getItem("@FoodExplorer:user");
+    const storageToken = localStorage.getItem("@FoodExplorer:token");
+
+    if (storageToken && storageUser) {
+      const decodedToken = jwtDecode(storageToken);
+
+      if (decodedToken.exp * 1000 < Date.now()) {
+        signOut();
+        return false;
+      }
+
+      return true;
+    } else {
+      return false;
+    }
   }
 
   // async function updateProfile({ user, avatarFile }) {
@@ -48,7 +67,7 @@ export function AuthProvider({ children }) {
 
   //     await api.put("/users", user);
 
-  //     localStorage.setItem("@RocketNotes:user", JSON.stringify(user));
+  //     localStorage.setItem("@FoodExplorer:user", JSON.stringify(user));
 
   //     setData({ user, token: data.token });
 
@@ -66,11 +85,10 @@ export function AuthProvider({ children }) {
   // }
 
   useEffect(() => {
-    const storageUser = localStorage.getItem("@RocketNotes:user");
-    const storageToken = localStorage.getItem("@RocketNotes:token");
+    const storageUser = localStorage.getItem("@FoodExplorer:user");
+    const storageToken = localStorage.getItem("@FoodExplorer:token");
 
     if (storageToken && storageUser) {
-      // api.defaults.headers["Authorization"] = `Bearer ${storageToken}`;
       loginService.setToken(storageToken);
       setData({ token: storageToken, user: JSON.parse(storageUser) });
     }
@@ -83,6 +101,7 @@ export function AuthProvider({ children }) {
         signOut,
         // updateProfile,
         user: data.user,
+        isAuthenticated,
       }}
     >
       {children}

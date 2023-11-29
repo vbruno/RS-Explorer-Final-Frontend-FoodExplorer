@@ -26,7 +26,9 @@ export function SignIn() {
       password,
     };
 
-    await signIn(data);
+    signIn(data).then(() => {
+      navigate("/");
+    });
   }
 
   function handleSignIn() {
