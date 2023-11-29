@@ -34,8 +34,6 @@ export function SignUp() {
 
     const result = await loginService.register(data);
 
-    console.log(result);
-
     if (result instanceof Error) {
       alert(result);
       return;
