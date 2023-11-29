@@ -46,6 +46,8 @@ export function SignIn() {
           <InputText
             title={"Email"}
             placeholder={"Exemplo: exemplo@exemplo.com.br"}
+            type="email"
+            required
             value={email}
             onChange={(event) => setEmail(event.target.value)}
           />
@@ -53,6 +55,8 @@ export function SignIn() {
           <InputText
             title={"Senha"}
             placeholder={"No mínimo 6 caracteres"}
+            required
+            type="password"
             value={password}
             onChange={(event) => setPassword(event.target.value)}
           />
