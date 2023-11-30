@@ -6,8 +6,17 @@ import {
 
 import { MainLayout } from "../layout/MainLayout";
 
-import { Home, Dish, SignIn, SignUp, ErrorPage } from "../pages";
+import {
+  Home,
+  Dish,
+  FormDish,
+  OrderAndPay,
+  SignIn,
+  SignUp,
+  ErrorPage,
+} from "../pages";
 import { PrivateRoute } from "./private.routes";
+import { AdminRoute } from "./admin.routes";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -16,6 +25,10 @@ export const router = createBrowserRouter(
         <Route path="/" element={<MainLayout />}>
           <Route path="/" element={<Home />} />
           <Route path="/dish" element={<Dish />} />
+          <Route path="/ordersAndPay" element={<OrderAndPay />} />
+          <Route path="/" element={<AdminRoute />}>
+            <Route path="/newDish" element={<FormDish />} />
+          </Route>
         </Route>
       </Route>
       <Route path="/login" element={<SignIn />} />

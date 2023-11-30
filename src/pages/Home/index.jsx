@@ -1,10 +1,22 @@
+import { useState, useEffect } from "react";
 import { Container, Content, ContentHeader } from "./styles";
+
+import { useAuth } from "../../Hooks/auth";
 
 import { ItemMenu } from "../../components/ItemMenu";
 
 import imgFood01 from "../../assets/imgFood01.png";
 
 export function Home() {
+  const { isAdministrator } = useAuth();
+
+  // eslint-disable-next-line no-unused-vars
+  const [isAdminState, setIsAdminState] = useState(false);
+
+  useEffect(() => {
+    isAdministrator() ? setIsAdminState(false) : setIsAdminState(true);
+  }, [isAdministrator]);
+
   return (
     <Container>
       <Content>

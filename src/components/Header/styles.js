@@ -24,10 +24,16 @@ export const Container = styled.header`
 
     background: transparent;
     border: none;
+
+    > div {
+      display: flex;
+      flex-direction: column;
+      align-items: end;
+    }
   }
 
   h1 {
-    width: 18.6rem;
+    /* width: 18.6rem; */
 
     display: flex;
     flex-direction: row;
@@ -47,6 +53,21 @@ export const Container = styled.header`
       width: 3rem;
       height: 3rem;
     }
+  }
+
+  p {
+    display: ${({ $isAdmin }) => ($isAdmin ? "flex" : "none")};
+
+    margin-top: -1rem;
+
+    color: var(--tints-cake-200, #82f3ff);
+
+    /* Roboto/Smallest regular */
+    font-family: Roboto;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 160%; /* 19.2px */
   }
 
   button {

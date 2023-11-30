@@ -50,6 +50,16 @@ export function AuthProvider({ children }) {
     }
   }
 
+  function isAdministrator() {
+    const storageUser = JSON.parse(localStorage.getItem("@FoodExplorer:user"));
+
+    if (storageUser.role === "admin") {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   // async function updateProfile({ user, avatarFile }) {
   //   try {
   //     if (avatarFile) {
@@ -106,6 +116,7 @@ export function AuthProvider({ children }) {
         // updateProfile,
         user: data.user,
         isAuthenticated,
+        isAdministrator,
       }}
     >
       {children}
