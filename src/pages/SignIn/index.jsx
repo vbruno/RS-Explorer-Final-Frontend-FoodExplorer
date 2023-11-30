@@ -26,9 +26,12 @@ export function SignIn() {
       password,
     };
 
-    signIn(data).then(() => {
+    try {
+      await signIn(data);
       navigate("/");
-    });
+    } catch (error) {
+      alert(error.message);
+    }
   }
 
   function handleSignIn() {

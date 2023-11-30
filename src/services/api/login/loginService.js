@@ -8,6 +8,7 @@ async function login({ email, password }) {
     });
     return response.data;
   } catch (error) {
+    console.error(error);
     return new Error(
       error.response.data.message || "Erro a fazer login no sistema"
     );

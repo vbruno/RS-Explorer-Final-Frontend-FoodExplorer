@@ -9,24 +9,20 @@ export function AuthProvider({ children }) {
   const [data, setData] = useState({});
 
   async function signIn({ email, password }) {
-    try {
-      const response = await loginService.login({ email, password });
+    const response = await loginService.login({ email, password });
 
-      const { token, user } = response;
-
-      localStorage.setItem("@FoodExplorer:user", JSON.stringify(user));
-      localStorage.setItem("@FoodExplorer:token", token);
-
-      loginService.setToken(token);
-
-      setData({ token, user });
-    } catch (error) {
-      if (error.response) {
-        alert(error.response.data.error);
-      } else {
-        alert("Erro ao realizar login, tente novamente mais tarde");
-      }
+    if (response instanceof Error) {
+      throw new Error("Incorrect email/password combination");
     }
+
+    const { token, user } = response;
+
+    localStorage.setItem("@FoodExplorer:user", JSON.stringify(user));
+    localStorage.setItem("@FoodExplorer:token", token);
+
+    loginService.setToken(token);
+
+    setData({ token, user });
   }
 
   function signOut() {
@@ -89,8 +85,16 @@ export function AuthProvider({ children }) {
     const storageToken = localStorage.getItem("@FoodExplorer:token");
 
     if (storageToken && storageUser) {
-      loginService.setToken(storageToken);
-      setData({ token: storageToken, user: JSON.parse(storageUser) });
+      const decodedToken = jwtDecode(storageToken);
+
+      if (decodedToken.exp * 1000 < Date.now()) {
+        signOut();
+      } else {
+        setData({ token: storageToken, user: JSON.parse(storageUser) });
+        loginService.setToken(storageToken);
+      }
+    } else {
+      signOut();
     }
   }, []);
 
