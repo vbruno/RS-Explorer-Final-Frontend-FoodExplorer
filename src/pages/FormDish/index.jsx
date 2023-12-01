@@ -20,47 +20,45 @@ export function FormDish() {
     description: "",
     price: "",
     image: "",
-    tags: [],
+    tags: ["milho", "tomate"],
   });
 
-  function handleEditFormData(event, field) {
+  const [newIngredient, setNewIngredient] = useState("");
+
+  function handleEditFormData(data, field) {
     switch (field) {
       case "name":
-        setFormData({ ...formData, name: event.target.value.trim() });
+        setFormData({ ...formData, name: data.target.value });
         break;
       case "category":
-        setFormData({ ...formData, category: event });
+        setFormData({ ...formData, category: data });
         break;
       case "description":
-        setFormData({ ...formData, description: event.target.value.trim() });
+        setFormData({ ...formData, description: data.target.value });
         break;
       case "price":
-        setFormData({ ...formData, price: event.target.value });
+        setFormData({ ...formData, price: data.target.value });
         break;
       case "image":
-        setFormData({ ...formData, image: event.target.value });
+        setFormData({ ...formData, image: data.target.value });
         break;
-      case "tags":
-        setFormData({ ...formData, tags: event.target.value });
+      case "tagsAdd":
+        setFormData({ ...formData, tags: [...formData.tags, data] });
+        setNewIngredient("");
+        break;
+      case "tagsRemove":
+        setFormData({
+          ...formData,
+          tags: formData.tags.filter((_, i) => i !== data),
+        });
         break;
       default:
         break;
     }
   }
 
-  // eslint-disable-next-line
-  function handleEditFormTags(tags) {
-    setFormData({ ...formData, tags });
-  }
-
   function handleLOG() {
     console.log(formData);
-  }
-
-  const [tags, setTags] = useState(["milho", "tomate"]);
-
-  function handleAddTag() {
-    setTags([...tags, new Date().getTime().toString()]);
   }
 
   return (
@@ -84,7 +82,14 @@ export function FormDish() {
           value={formData.category}
           onValueChange={(e) => handleEditFormData(e, "category")}
         />
-        <InputTags title="Ingredientes" tags={tags} onAddTag={handleAddTag} />
+        <InputTags
+          title="Ingredientes"
+          tags={formData.tags}
+          newTag={newIngredient}
+          onChange={(e) => setNewIngredient(e.target.value)}
+          onTagAdd={() => handleEditFormData(newIngredient, "tagsAdd")}
+          onTagDelete={(index) => handleEditFormData(index, "tagsRemove")}
+        />
         <InputText
           title="Preço"
           placeholder="R$ 00,00"
