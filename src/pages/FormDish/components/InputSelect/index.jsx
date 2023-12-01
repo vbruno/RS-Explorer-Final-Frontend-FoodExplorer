@@ -15,13 +15,13 @@ import * as Select from "@radix-ui/react-select";
 import IconArrowDown from "./assets/ArrowDown.svg?react";
 import IconCheckItem from "./assets/ArrowCheck.svg?react";
 
-export function InputSelect({ title }) {
+export function InputSelect({ title, value, onValueChange }) {
   return (
     <Container>
       <header>{title}</header>
-      <Select.Root>
+      <Select.Root value={value} onValueChange={onValueChange}>
         <SelectTrigger>
-          <Select.Value placeholder="Refeição" />
+          <Select.Value placeholder="Refeição">{value}</Select.Value>
           <Select.Icon>
             <IconArrowDown />
           </Select.Icon>
@@ -30,9 +30,9 @@ export function InputSelect({ title }) {
           <SelectContent>
             <SelectViewport>
               <Select.Group>
-                <SelectItem value="Refeição">Refeições</SelectItem>
-                <SelectItem value="Sobremesa">Sobremesas</SelectItem>
-                <SelectItem value="Bebida">Bebidas</SelectItem>
+                <SelectItem value="refeição">Refeições</SelectItem>
+                <SelectItem value="sobremesa">Sobremesas</SelectItem>
+                <SelectItem value="bebida">Bebidas</SelectItem>
               </Select.Group>
             </SelectViewport>
           </SelectContent>

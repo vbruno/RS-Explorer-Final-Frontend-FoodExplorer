@@ -1,9 +1,10 @@
 import { Container } from "./styles";
 
-export function InputTextArea() {
+export function InputTextArea({ title, ...rest }) {
   return (
     <Container>
-      <h1>Pagina em branco</h1>
+      <label>{title}</label>
+      <textarea type="text" {...rest} />
     </Container>
   );
 }

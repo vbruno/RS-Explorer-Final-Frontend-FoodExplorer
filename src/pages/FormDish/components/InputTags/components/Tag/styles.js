@@ -2,10 +2,11 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
-  height: 32px;
-  padding: 10px 16px;
+  /* height: 32px; */
+  padding: 4px 16px;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 
   border-radius: 8px;
   background: ${({ theme, $isNew }) =>
@@ -13,12 +14,14 @@ export const Container = styled.div`
   border: ${({ theme, $isNew }) =>
     $isNew ? `1px dashed ${theme.COLORS.LIGHT_500}` : "none"};
 
-  text-transform: capitalize;
-
-  span {
+  input {
+    flex: 1;
+    width: 10.5rem;
     color: ${({ theme, $isNew }) =>
       $isNew ? theme.COLORS.LIGHT_500 : theme.COLORS.LIGHT_100};
     text-align: center;
+    background: transparent;
+    border: none;
 
     /* Poppins/100-medium */
     font-family: Poppins;
@@ -27,27 +30,24 @@ export const Container = styled.div`
     font-weight: 500;
     line-height: 24px; /* 171.429% */
 
-    display: flex;
-    align-items: center;
-    text-align: center;
-    gap: 8px;
+    text-transform: capitalize;
+  }
 
-    button {
-      background: transparent;
-      border: none;
-      outline: none;
-      cursor: pointer;
-    }
+  button {
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
 
-    svg {
-      width: 8px;
-      height: 8px;
+  svg {
+    width: 8px;
+    height: 8px;
 
-      &:hover {
-        path {
-          fill: ${({ theme, $isNew }) =>
-            $isNew ? theme.COLORS.MINT_100 : theme.COLORS.TOMATO_400};
-        }
+    &:hover {
+      path {
+        fill: ${({ theme, $isNew }) =>
+          $isNew ? theme.COLORS.MINT_100 : theme.COLORS.TOMATO_400};
       }
     }
   }

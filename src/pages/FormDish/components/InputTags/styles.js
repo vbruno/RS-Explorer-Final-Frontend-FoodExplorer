@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100%;
-
   display: flex;
   flex-direction: column;
   border: none;
@@ -23,6 +22,7 @@ export const Container = styled.div`
 
   > section {
     display: flex;
+    flex: 1;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;

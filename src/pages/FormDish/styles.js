@@ -51,12 +51,12 @@ export const Form = styled.form`
 
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: auto;
+  grid-template-rows: fit-content fit-content fit-content 1fr;
   grid-template-areas:
     "file name name name select"
     "tags tags tags tags price"
     "description description description description description"
-    "empty empty empty empty button";
+    "empty empty empty button1 button2";
 
   gap: 3.2rem;
 
@@ -84,7 +84,11 @@ export const Form = styled.form`
     grid-area: description;
   }
 
-  > button {
-    grid-area: button;
+  > button:nth-child(7) {
+    grid-area: button1;
+  }
+
+  > button:last-child {
+    grid-area: button2;
   }
 `;
