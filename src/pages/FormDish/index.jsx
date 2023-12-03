@@ -25,8 +25,8 @@ export function FormDish() {
     category: "",
     description: "",
     price: "",
-    image: "",
-    tags: ["milho", "tomate"],
+    image: null,
+    tags: [],
   });
 
   const [newIngredient, setNewIngredient] = useState("");
@@ -43,10 +43,13 @@ export function FormDish() {
         setFormData({ ...formData, description: data.target.value });
         break;
       case "price":
-        setFormData({ ...formData, price: data.target.value });
+        setFormData({
+          ...formData,
+          price: data.target.value.match(/(\d+,)(\d{2})/g),
+        });
         break;
       case "image":
-        setFormData({ ...formData, image: data.target.value });
+        setFormData({ ...formData, image: data });
         break;
       case "tagsAdd":
         setFormData({ ...formData, tags: [...formData.tags, data] });
@@ -75,15 +78,20 @@ export function FormDish() {
       description: formData.description.trim(),
       price: formData.price,
       ingredients: formData.tags.toString(),
-      image: "image1",
+      image: formData.image,
     };
 
     dishService
       .newDish(data)
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
-
-    // navigate(-1);
+      .then((res) => {
+        console.log(res);
+        alert("Prato adicionado com sucesso!");
+        navigate(-1);
+      })
+      .catch((err) => {
+        console.log(err);
+        alert("Erro ao adicionar prato!");
+      });
   }
 
   function handleEditDish() {
@@ -107,7 +115,11 @@ export function FormDish() {
 
       <h1>Adicionar prato</h1>
       <Form>
-        <InputFile title="Imagem do prato" />
+        <InputFile
+          title="Imagem do prato"
+          isLoading={formData.image}
+          onChange={(e) => handleEditFormData(e.target.files[0], "image")}
+        />
         <InputText
           title="Nome"
           placeholder="Ex.: Salada Ceasar"
@@ -123,8 +135,11 @@ export function FormDish() {
           title="Ingredientes"
           tags={formData.tags}
           newTag={newIngredient}
-          onChange={(e) => setNewIngredient(e.target.value)}
-          onTagAdd={() => handleEditFormData(newIngredient, "tagsAdd")}
+          onChange={(e) => setNewIngredient(e.target.value.toLowerCase())}
+          onTagAdd={() =>
+            newIngredient.trim() != "" &&
+            handleEditFormData(newIngredient, "tagsAdd")
+          }
           onTagDelete={(index) => handleEditFormData(index, "tagsRemove")}
         />
         <InputText
@@ -145,7 +160,9 @@ export function FormDish() {
             <Button onClick={handleEditDish}>Salvar Alterações</Button>
           </>
         ) : (
-          <Button onClick={handleAddDish}>Adicionar Prato</Button>
+          <>
+            <Button onClick={handleAddDish}>Adicionar Prato</Button>
+          </>
         )}
       </Form>
     </Container>

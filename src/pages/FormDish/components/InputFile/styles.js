@@ -42,7 +42,7 @@ export const Container = styled.div`
       align-items: center;
 
       padding: 1.2rem 3.2rem;
-      gap: 8px;
+      gap: 2rem;
 
       color: ${({ theme }) => theme.COLORS.LIGHT_100};
       text-align: left;
