@@ -1,5 +1,8 @@
 // eslint-disable-next-line
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { useNavigate, Link, useResolvedPath } from "react-router-dom";
+
+import { dishService } from "../../services/api/dish/dishService";
 
 import { Container, Form } from "./styles";
 import { Button } from "../../components";
@@ -14,6 +17,9 @@ import {
 import CareLeft from "../../assets/icons/CareLeft.svg?react";
 
 export function FormDish() {
+  const navigate = useNavigate();
+  const { pathname } = useResolvedPath();
+
   const [formData, setFormData] = useState({
     name: "",
     category: "",
@@ -57,16 +63,47 @@ export function FormDish() {
     }
   }
 
-  function handleLOG() {
+  function handleAddDish() {
+    const data = {
+      name: formData.name.trim(),
+      category:
+        formData.category === "Refeição"
+          ? "snack"
+          : formData.category === "Sobremesa"
+          ? "dessert"
+          : "drink",
+      description: formData.description.trim(),
+      price: formData.price,
+      ingredients: formData.tags.toString(),
+      image: "image1",
+    };
+
+    dishService
+      .newDish(data)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+
+    // navigate(-1);
+  }
+
+  function handleEditDish() {
     console.log(formData);
+    navigate(-1);
+  }
+
+  function handleDeleteDish() {
+    console.log(formData);
+    navigate(-1);
   }
 
   return (
     <Container>
-      <header>
-        <CareLeft />
-        <h1>voltar</h1>
-      </header>
+      <Link to={-1}>
+        <header>
+          <CareLeft />
+          <h1>voltar</h1>
+        </header>
+      </Link>
 
       <h1>Adicionar prato</h1>
       <Form>
@@ -102,8 +139,14 @@ export function FormDish() {
           value={formData.description}
           onChange={(e) => handleEditFormData(e, "description")}
         />
-        <Button>Excluir Prato</Button>
-        <Button onClick={handleLOG}>Salvar Alterações</Button>
+        {pathname === "newDish" ? (
+          <>
+            <Button onClick={handleDeleteDish}>Excluir Prato</Button>
+            <Button onClick={handleEditDish}>Salvar Alterações</Button>
+          </>
+        ) : (
+          <Button onClick={handleAddDish}>Adicionar Prato</Button>
+        )}
       </Form>
     </Container>
   );

@@ -54,6 +54,7 @@ async function register({ name, email, password }) {
     );
   }
 }
+
 export const loginService = {
   login,
   logout,

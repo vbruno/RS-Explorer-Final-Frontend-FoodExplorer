@@ -21,7 +21,7 @@ export function InputSelect({ title, value, onValueChange }) {
       <header>{title}</header>
       <Select.Root value={value} onValueChange={onValueChange}>
         <SelectTrigger>
-          <Select.Value placeholder="Refeição">{value}</Select.Value>
+          <Select.Value placeholder="...">{value}</Select.Value>
           <Select.Icon>
             <IconArrowDown />
           </Select.Icon>
@@ -30,9 +30,9 @@ export function InputSelect({ title, value, onValueChange }) {
           <SelectContent>
             <SelectViewport>
               <Select.Group>
-                <SelectItem value="refeição">Refeições</SelectItem>
-                <SelectItem value="sobremesa">Sobremesas</SelectItem>
-                <SelectItem value="bebida">Bebidas</SelectItem>
+                <SelectItem value="Refeição">Refeição</SelectItem>
+                <SelectItem value="Sobremesa">Sobremesas</SelectItem>
+                <SelectItem value="Bebida">Bebidas</SelectItem>
               </Select.Group>
             </SelectViewport>
           </SelectContent>

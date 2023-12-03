@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   width: 100%;
 
-  > header {
+  a > header {
     display: flex;
     flex-direction: row;
     align-items: center;
