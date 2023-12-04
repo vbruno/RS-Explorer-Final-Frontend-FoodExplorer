@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { Container, Content, ContentHeader } from "./styles";
 
-import { useAuth } from "../../Hooks/auth";
+import { useAuth } from "../../hooks/auth";
+import { useFoods } from "../../hooks/useFoods";
 
 import { ItemMenu } from "../../components/ItemMenu";
 
@@ -9,6 +10,7 @@ import imgFood01 from "../../assets/imgFood01.png";
 
 export function Home() {
   const { isAdministrator } = useAuth();
+  const { foods } = useFoods();
 
   // eslint-disable-next-line no-unused-vars
   const [isAdminState, setIsAdminState] = useState(false);
@@ -16,6 +18,10 @@ export function Home() {
   useEffect(() => {
     isAdministrator() ? setIsAdminState(false) : setIsAdminState(true);
   }, [isAdministrator]);
+
+  useEffect(() => {
+    console.log(foods);
+  }, [foods]);
 
   return (
     <Container>

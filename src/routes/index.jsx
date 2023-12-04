@@ -18,11 +18,20 @@ import {
 import { PrivateRoute } from "./private.routes";
 import { AdminRoute } from "./admin.routes";
 
+import { FoodsProvider } from "../contexts/FoodsContext";
+
 export const router = createBrowserRouter(
   createRoutesFromElements(
     <Route errorElement={<ErrorPage />}>
       <Route path="/" element={<PrivateRoute />}>
-        <Route path="/" element={<MainLayout />}>
+        <Route
+          path="/"
+          element={
+            <FoodsProvider>
+              <MainLayout />
+            </FoodsProvider>
+          }
+        >
           <Route path="/" element={<Home />} />
           <Route path="/dish" element={<Dish />} />
           <Route path="/ordersAndPay" element={<OrderAndPay />} />

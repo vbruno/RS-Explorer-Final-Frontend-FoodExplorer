@@ -29,6 +29,41 @@ async function newDish(dataDish) {
   }
 }
 
+async function getAllDishes() {
+  try {
+    const response = await api.get("/foods/search?search=-999");
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    throw new Error(error.response.data.message || "Erro ao buscar pratos");
+  }
+}
+
+async function getDishesByKeyWord(keyWord) {
+  if (keyWord.length < 3) return;
+
+  try {
+    const response = await api.get(`/foods/search?search=${keyWord}`);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    throw new Error(error.response.data.message || "Erro ao buscar pratos");
+  }
+}
+
+async function getDishById(id) {
+  try {
+    const response = await api.get(`/foods/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    throw new Error(error.response.data.message || "Erro ao buscar prato");
+  }
+}
+
 export const dishService = {
   newDish,
+  getAllDishes,
+  getDishesByKeyWord,
+  getDishById,
 };
