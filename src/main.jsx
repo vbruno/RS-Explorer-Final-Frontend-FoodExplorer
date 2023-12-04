@@ -13,7 +13,7 @@ register();
 import GlobalStyle from "./styles/global";
 import theme from "./styles/theme";
 
-import { AuthProvider } from "./Hooks/auth";
+import { AuthProvider } from "./contexts/AuthContext";
 
 import { RouterProvider } from "react-router-dom";
 import { router } from "./routes";

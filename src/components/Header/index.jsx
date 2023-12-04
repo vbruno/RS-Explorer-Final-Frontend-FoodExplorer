@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useResolvedPath } from "react-router-dom";
 import { Container } from "./styles";
 
 import Logo from "../../assets/logo.svg?react";
@@ -7,10 +7,11 @@ import IconSignOut from "../../assets/icons/SignOut.svg?react";
 import { Search } from "./components/Search";
 import { Button } from "../Button";
 
-import { useAuth } from "../../Hooks/auth";
+import { useAuth } from "../../hooks/auth";
 
 export function Header() {
   const navigate = useNavigate();
+  const { pathname } = useResolvedPath();
   const { signOut, isAdministrator } = useAuth();
 
   const [isAdminState, setIsAdminState] = useState(false);
@@ -20,10 +21,12 @@ export function Header() {
   }, [isAdministrator]);
 
   function handleNewDish() {
+    if (pathname === "/newDish") return;
     isAdminState ? navigate("/newDish") : alert("Você não é administrador");
   }
 
   function handleOrders() {
+    if (pathname === "/ordersAndPay") return;
     !isAdminState
       ? navigate("/ordersAndPay")
       : alert("Você esta logado como administrador");

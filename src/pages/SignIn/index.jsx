@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import { Container, Form } from "./styles";
 
-import { useAuth } from "../../Hooks/auth";
+import { useAuth } from "../../hooks/auth";
 
 import imgLogo from "../../assets/logo.svg";
 

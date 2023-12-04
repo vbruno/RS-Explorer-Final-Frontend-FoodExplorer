@@ -1,9 +1,9 @@
-import { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect } from "react";
 import { jwtDecode } from "jwt-decode";
 
 import { loginService } from "../services/api/login/loginService";
 
-const AuthContext = createContext({});
+export const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
   const [data, setData] = useState({});
@@ -122,10 +122,4 @@ export function AuthProvider({ children }) {
       {children}
     </AuthContext.Provider>
   );
-}
-
-// eslint-disable-next-line react-refresh/only-export-components
-export function useAuth() {
-  const context = useContext(AuthContext);
-  return context;
 }
