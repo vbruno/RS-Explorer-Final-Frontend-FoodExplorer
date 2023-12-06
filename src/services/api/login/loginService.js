@@ -55,9 +55,18 @@ async function register({ name, email, password }) {
   }
 }
 
+async function connection() {
+  try {
+    await api.get("/");
+  } catch (error) {
+    throw new Error(error);
+  }
+}
+
 export const loginService = {
   login,
   logout,
   setToken,
   register,
+  connection,
 };

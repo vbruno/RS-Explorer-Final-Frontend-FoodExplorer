@@ -9,6 +9,10 @@ export function AuthProvider({ children }) {
   const [data, setData] = useState({});
 
   async function signIn({ email, password }) {
+    await loginService.connection().catch((error) => {
+      throw alert(error.message);
+    });
+
     const response = await loginService.login({ email, password });
 
     if (response instanceof Error) {
@@ -60,39 +64,15 @@ export function AuthProvider({ children }) {
     }
   }
 
-  // async function updateProfile({ user, avatarFile }) {
-  //   try {
-  //     if (avatarFile) {
-  //       const fileUploadForm = new FormData();
-  //       fileUploadForm.append("avatar", avatarFile);
-
-  //       const response = await api.patch("/users/avatar", fileUploadForm);
-
-  //       user.avatar = response.data.avatar;
-  //     }
-
-  //     await api.put("/users", user);
-
-  //     localStorage.setItem("@FoodExplorer:user", JSON.stringify(user));
-
-  //     setData({ user, token: data.token });
-
-  //     alert("Perfil atualizado com sucesso");
-  //   } catch (error) {
-  //     if (error.response) {
-  //       console.log(error.response.data);
-  //       alert(error.response.data.error);
-  //     } else {
-  //       alert(
-  //         "Erro ao tentar atualizar o seu perfil, tente novamente mais tarde"
-  //       );
-  //     }
-  //   }
-  // }
-
   useEffect(() => {
     const storageUser = localStorage.getItem("@FoodExplorer:user");
     const storageToken = localStorage.getItem("@FoodExplorer:token");
+
+    // if (!storageToken || !storageUser) {
+    //   signOut();
+    // }
+
+    // loginService.connection().catch(signOut());
 
     if (storageToken && storageUser) {
       const decodedToken = jwtDecode(storageToken);
