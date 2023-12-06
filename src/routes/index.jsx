@@ -40,6 +40,7 @@ export const router = createBrowserRouter(
           <Route path="/ordersAndPay" element={<OrderAndPay />} />
           <Route path="/" element={<AdminRoute />}>
             <Route path="/newDish" element={<FormDish />} />
+            <Route path="/dish/:id" element={<FormDish />} />
           </Route>
         </Route>
       </Route>

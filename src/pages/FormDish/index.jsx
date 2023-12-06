@@ -1,6 +1,11 @@
 // eslint-disable-next-line
-import { useState } from "react";
-import { useNavigate, Link, useResolvedPath } from "react-router-dom";
+import { useState, useEffect } from "react";
+import {
+  useNavigate,
+  Link,
+  useResolvedPath,
+  useParams,
+} from "react-router-dom";
 
 import { dishService } from "../../services/api/dish/dishService";
 
@@ -19,6 +24,7 @@ import CareLeft from "../../assets/icons/CareLeft.svg?react";
 export function FormDish() {
   const navigate = useNavigate();
   const { pathname } = useResolvedPath();
+  const { id } = useParams();
 
   const [formData, setFormData] = useState({
     name: "",
@@ -96,13 +102,33 @@ export function FormDish() {
 
   function handleEditDish() {
     console.log(formData);
-    navigate(-1);
   }
 
   function handleDeleteDish() {
     console.log(formData);
-    navigate(-1);
+
+    console.log(typeof formData.image);
   }
+
+  useEffect(() => {
+    if (!id) return;
+
+    dishService.getDishById(id).then((res) => {
+      setFormData({
+        name: res.name,
+        category:
+          res.type === "snack"
+            ? "Refeição"
+            : res.type === "dessert"
+            ? "Sobremesa"
+            : "Bebida",
+        description: res.description,
+        price: res.price,
+        image: res.image,
+        tags: res.ingredients.split(","),
+      });
+    });
+  }, [id]);
 
   return (
     <Container>
@@ -113,7 +139,7 @@ export function FormDish() {
         </header>
       </Link>
 
-      <h1>Adicionar prato</h1>
+      {!id ? <h1>Adicionar prato</h1> : <h1>Editar prato</h1>}
       <Form>
         <InputFile
           title="Imagem do prato"
@@ -156,12 +182,12 @@ export function FormDish() {
         />
         {pathname === "newDish" ? (
           <>
-            <Button onClick={handleDeleteDish}>Excluir Prato</Button>
-            <Button onClick={handleEditDish}>Salvar Alterações</Button>
+            <Button onClick={handleAddDish}>Adicionar Prato</Button>
           </>
         ) : (
           <>
-            <Button onClick={handleAddDish}>Adicionar Prato</Button>
+            <Button onClick={handleDeleteDish}>Excluir Prato</Button>
+            <Button onClick={handleEditDish}>Salvar Alterações</Button>
           </>
         )}
       </Form>

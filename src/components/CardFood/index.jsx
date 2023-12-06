@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { api } from "../../services/api/axios/axiosConfig";
 import { useAuth } from "../../hooks/auth";
@@ -13,6 +14,7 @@ import IconHeart from "../../assets/icons/Heart.svg?react";
 import IconPencil from "../../assets/icons/Pencil.svg?react";
 
 export function CardFood({ dataFood = {} }) {
+  const navigate = useNavigate();
   const { isAdministrator } = useAuth();
   const { handleAddOrder } = useOrders();
   const [counter, setCounter] = useState(0);
@@ -40,6 +42,10 @@ export function CardFood({ dataFood = {} }) {
     });
   }
 
+  function handleEditFood() {
+    navigate(`/dish/${dataFood.id}`);
+  }
+
   return (
     <Container>
       <img src={imageFood} alt="Prato" />
@@ -54,7 +60,15 @@ export function CardFood({ dataFood = {} }) {
         />
         <Button onClick={handleAddFood}>incluir</Button>
       </div>
-      <button>{isAdministrator() ? <IconPencil /> : <IconHeart />}</button>
+      {isAdministrator() ? (
+        <button onClick={handleEditFood}>
+          <IconPencil />
+        </button>
+      ) : (
+        <button onClick={() => console.log("Favorita Prato")}>
+          <IconHeart />
+        </button>
+      )}
     </Container>
   );
 }
