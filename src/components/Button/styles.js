@@ -12,7 +12,10 @@ export const Container = styled.button`
   border-radius: 5px;
   border: none;
 
-  background: ${({ theme }) => theme.COLORS.TOMATO_100};
+  gap: 0.8rem;
+
+  background: ${({ theme, $variant }) =>
+    $variant === "primary" ? theme.COLORS.TOMATO_400 : theme.COLORS.DARK_800};
 
   color: ${({ theme }) => theme.COLORS.LIGHT_100};
   text-align: center;

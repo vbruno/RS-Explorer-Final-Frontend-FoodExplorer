@@ -7,6 +7,8 @@ import IconSignOut from "../../assets/icons/SignOut.svg?react";
 import { Search } from "./components/Search";
 import { Button } from "../Button";
 
+import IconOrder from "../../assets/icons/Receipt.svg?react";
+
 import { useAuth } from "../../hooks/auth";
 
 export function Header() {
@@ -51,7 +53,9 @@ export function Header() {
         {isAdminState ? (
           <Button onClick={handleNewDish}>Novo prato</Button>
         ) : (
-          <Button onClick={handleOrders}>Pedidos (0)</Button>
+          <Button onClick={handleOrders} icon={IconOrder}>
+            Pedidos (0)
+          </Button>
         )}
         <button onClick={handleSignOut}>
           <IconSignOut />

@@ -186,7 +186,9 @@ export function FormDish() {
           </>
         ) : (
           <>
-            <Button onClick={handleDeleteDish}>Excluir Prato</Button>
+            <Button onClick={handleDeleteDish} variant="secondary">
+              Excluir Prato
+            </Button>
             <Button onClick={handleEditDish}>Salvar Alterações</Button>
           </>
         )}
