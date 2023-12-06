@@ -45,7 +45,7 @@ export const Container = styled.div`
     font-style: normal;
     font-weight: 400;
     line-height: 160%; /* 22.4px */
-    white-space: nowrap;
+    white-space: wrap;
   }
 
   > h2 {

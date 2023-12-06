@@ -19,6 +19,7 @@ import { PrivateRoute } from "./private.routes";
 import { AdminRoute } from "./admin.routes";
 
 import { FoodsProvider } from "../contexts/FoodsContext";
+import { OrdersProvider } from "../contexts/OrdersContext";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -28,7 +29,9 @@ export const router = createBrowserRouter(
           path="/"
           element={
             <FoodsProvider>
-              <MainLayout />
+              <OrdersProvider>
+                <MainLayout />
+              </OrdersProvider>
             </FoodsProvider>
           }
         >

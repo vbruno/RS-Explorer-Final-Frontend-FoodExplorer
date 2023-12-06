@@ -3,14 +3,14 @@ import { Container } from "./styles";
 import IconMinus from "../../assets/icons/Minus.svg?react";
 import IconPlus from "../../assets/icons/Plus.svg?react";
 
-export function Counter() {
+export function Counter({ quantity = 0, onIncrement, onDecrement }) {
   return (
     <Container>
-      <button>
+      <button onClick={onDecrement}>
         <IconMinus />
       </button>
-      <span>0</span>
-      <button>
+      <span>{quantity}</span>
+      <button onClick={onIncrement}>
         <IconPlus />
       </button>
     </Container>
