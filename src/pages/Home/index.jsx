@@ -14,13 +14,25 @@ export function Home() {
 
   // eslint-disable-next-line no-unused-vars
   const [isAdminState, setIsAdminState] = useState(false);
+  const [foodsCategorySnack, setFoodsCategorySnack] = useState([]);
+  const [foodsCategoryDessert, setFoodsCategoryDessert] = useState([]);
+  const [foodsCategoryDrink, setFoodsCategoryDrink] = useState([]);
 
   useEffect(() => {
     isAdministrator() ? setIsAdminState(false) : setIsAdminState(true);
   }, [isAdministrator]);
 
   useEffect(() => {
-    console.log(foods);
+    const foodsCategorySnack = foods.filter((food) => food.type === "snack");
+    setFoodsCategorySnack(foodsCategorySnack);
+
+    const foodsCategoryDessert = foods.filter(
+      (food) => food.type === "dessert"
+    );
+    setFoodsCategoryDessert(foodsCategoryDessert);
+
+    const foodsCategoryDrink = foods.filter((food) => food.type === "drink");
+    setFoodsCategoryDrink(foodsCategoryDrink);
   }, [foods]);
 
   return (
@@ -36,9 +48,9 @@ export function Home() {
           </div>
         </ContentHeader>
 
-        <ItemMenu />
-        <ItemMenu />
-        <ItemMenu />
+        <ItemMenu title={"Refeições"} dataCardFood={foodsCategorySnack} />
+        <ItemMenu title={"Sobremesas"} dataCardFood={foodsCategoryDessert} />
+        <ItemMenu title={"Bebidas"} dataCardFood={foodsCategoryDrink} />
       </Content>
     </Container>
   );
