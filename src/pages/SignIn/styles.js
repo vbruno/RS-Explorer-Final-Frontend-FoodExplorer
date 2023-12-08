@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { DEVICE_BREAKPOINTS } from "../../styles/deviceBreakpoints";
 
 export const Container = styled.div`
   display: grid;
@@ -20,7 +21,7 @@ export const Container = styled.div`
 
       /* Roboto/Giant bold */
       font-family: "Roboto";
-      font-size: 42px;
+      font-size: 4.2rem;
       font-style: normal;
       font-weight: 700;
       line-height: normal;
@@ -32,6 +33,33 @@ export const Container = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  }
+
+  @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background: ${({ theme }) => theme.COLORS.DARK_700};
+
+    > div:nth-child(1) {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+
+      margin-top: 0;
+
+      gap: 1.6rem;
+
+      svg {
+        width: 5rem;
+        height: 5rem;
+      }
+    }
   }
 `;
 
@@ -55,9 +83,24 @@ export const Form = styled.form`
 
     /* Poppins/400-medium */
     font-family: "Poppins";
-    font-size: 32px;
+    font-size: 3.2rem;
     font-style: normal;
     font-weight: 500;
     line-height: 140%; /* 44.8px */
+  }
+
+  @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+    > h1 {
+      display: none;
+    }
+
+    button {
+      /* Poppins/100-medium */
+      font-family: Poppins;
+      font-size: 1.4rem;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 24px; /* 171.429% */
+    }
   }
 `;

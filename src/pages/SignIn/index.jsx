@@ -5,7 +5,7 @@ import { Container, Form } from "./styles";
 
 import { useAuth } from "../../hooks/auth";
 
-import imgLogo from "../../assets/logo.svg";
+import ImgLogo from "../../assets/logo.svg?react";
 
 import { InputText } from "../../components/InputText";
 import { Button } from "../../components/Button";
@@ -41,7 +41,7 @@ export function SignIn() {
   return (
     <Container>
       <div>
-        <img src={imgLogo} alt="Logo" />
+        <ImgLogo />
         <h1>food explorer</h1>
       </div>
       <div>

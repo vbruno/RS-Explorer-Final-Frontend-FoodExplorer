@@ -17,7 +17,7 @@ export const Container = styled.div`
 
     /* Roboto/Small regular */
     font-family: "Roboto";
-    font-size: 16px;
+    font-size: 1.6rem;
     font-style: normal;
     font-weight: 400;
     line-height: 100%; /* 16px */
@@ -25,22 +25,22 @@ export const Container = styled.div`
 
   > input {
     display: flex;
-    width: 348px;
-    height: 48px;
-    padding: 12px 14px;
+    width: 34.8rem;
+    height: 4.8rem;
+    padding: 1.2rem 1.4rem;
     justify-content: center;
     align-items: center;
-    gap: 14px;
+    gap: 1.4rem;
 
     border-radius: 5px;
-    border: 1px solid ${({ theme }) => theme.COLORS.LIGHT_100};
-    background: transparent;
+    border: none;
+    background: ${({ theme }) => theme.COLORS.DARK_900};
 
     color: ${({ theme }) => theme.COLORS.LIGHT_100};
 
     /* Roboto/Small regular */
     font-family: "Roboto";
-    font-size: 16px;
+    font-size: 1.6rem;
     font-style: normal;
     font-weight: 400;
     line-height: 100%; /* 16px */
