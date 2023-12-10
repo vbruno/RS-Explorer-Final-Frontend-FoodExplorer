@@ -1,4 +1,7 @@
 import styled from "styled-components";
+import { DEVICE_TYPE } from "../../styles/deviceBreakpoints";
+
+import { Button } from "../Button";
 
 export const Container = styled.header`
   width: 100%;
@@ -15,68 +18,126 @@ export const Container = styled.header`
     gap: 3.2rem;
   }
 
-  button:first-child {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-items: center;
-    gap: 10px;
+  @media ${DEVICE_TYPE.MOBILE} {
+    padding: 5.6rem 2.8rem 2.4rem;
+  }
+`;
 
-    background: transparent;
-    border: none;
+export const ButtonLogo = styled.button`
+  width: fit-content;
+
+  background: transparent;
+  border: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 1.2rem;
+
+  svg {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  > div {
+    h1 {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-items: center;
+      color: ${({ theme }) => theme.COLORS.LIGHT_100};
+
+      /* Roboto/Bigger bold */
+      font-family: Roboto;
+      font-size: 2.4rem;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+      white-space: nowrap;
+
+      svg {
+        width: 3rem;
+        height: 3rem;
+      }
+    }
+
+    p {
+      display: ${({ $isAdmin }) => ($isAdmin ? "flex" : "none")};
+
+      margin-top: -1rem;
+
+      color: var(--tints-cake-200, #82f3ff);
+
+      /* Roboto/Smallest regular */
+      font-family: Roboto;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 160%; /* 19.2px */
+    }
+  }
+
+  @media ${DEVICE_TYPE.MOBILE} {
+    svg {
+      width: 2.4rem;
+      height: 2.4rem;
+    }
 
     > div {
       display: flex;
-      flex-direction: column;
-      align-items: end;
+      align-items: center;
+      justify-content: space-between;
+
+      /* gap: 3.2rem; */
+
+      h1 {
+        /* width: 18.6rem; */
+
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+        color: ${({ theme }) => theme.COLORS.LIGHT_100};
+
+        font-family: Roboto;
+        font-size: 2.4rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+      }
     }
   }
+`;
 
-  h1 {
-    /* width: 18.6rem; */
+export const ButtonMenu = styled.button`
+  width: fit-content;
+  background: transparent;
+  border: none;
+`;
 
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-items: center;
-    color: ${({ theme }) => theme.COLORS.LIGHT_100};
+export const ButtonOrder = styled(Button)`
+  max-width: 20rem;
 
-    /* Roboto/Bigger bold */
-    font-family: Roboto;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-    white-space: nowrap;
-
-    svg {
-      width: 3rem;
-      height: 3rem;
-    }
-  }
-
-  p {
-    display: ${({ $isAdmin }) => ($isAdmin ? "flex" : "none")};
-
-    margin-top: -1rem;
-
-    color: var(--tints-cake-200, #82f3ff);
-
-    /* Roboto/Smallest regular */
-    font-family: Roboto;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 160%; /* 19.2px */
-  }
-
-  button {
-    max-width: 21.6rem;
-  }
-
-  button:last-child {
+  @media ${DEVICE_TYPE.MOBILE} {
+    padding: 0;
     width: fit-content;
     background: transparent;
     border: none;
+
+    &:hover {
+      background: transparent;
+    }
+
+    &:disabled {
+      background: transparent;
+      cursor: not-allowed;
+    }
   }
+`;
+
+export const ButtonLogout = styled.button`
+  width: fit-content;
+  background: transparent;
+  border: none;
 `;

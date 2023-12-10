@@ -6,7 +6,6 @@ export function Footer() {
   return (
     <Container>
       <h1>
-        {" "}
         <Logo />
         food explorer
       </h1>

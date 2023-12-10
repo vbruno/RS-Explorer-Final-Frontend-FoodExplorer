@@ -1,8 +1,11 @@
 import styled from "styled-components";
 
+import { DEVICE_TYPE } from "../../styles/deviceBreakpoints";
+import { FONTS_TYPE } from "../../styles/font";
+
 export const Container = styled.div`
-  width: 30.4rem;
-  height: 46.2rem;
+  max-width: 30.4rem;
+  max-height: 46.2rem;
 
   display: flex;
   flex-direction: column;
@@ -18,8 +21,8 @@ export const Container = styled.div`
   position: relative;
 
   > img {
-    width: 17.6rem;
-    height: 17.6rem;
+    max-width: 17.6rem;
+    max-height: 17.6rem;
   }
 
   > h1 {
@@ -28,7 +31,7 @@ export const Container = styled.div`
 
     /* Poppins/300-bold */
     font-family: "Poppins";
-    font-size: 24px;
+    font-size: 2.2rem;
     font-style: normal;
     font-weight: 700;
     line-height: 140%; /* 33.6px */
@@ -41,7 +44,7 @@ export const Container = styled.div`
 
     /* Roboto/Smaller regular */
     font-family: "Roboto";
-    font-size: 14px;
+    font-size: 1.2rem;
     font-style: normal;
     font-weight: 400;
     line-height: 160%; /* 22.4px */
@@ -54,7 +57,7 @@ export const Container = styled.div`
 
     /* Roboto/Biggest regular */
     font-family: Roboto;
-    font-size: 32px;
+    font-size: 3.2rem;
     font-style: normal;
     font-weight: 400;
     line-height: 160%; /* 51.2px */
@@ -67,8 +70,8 @@ export const Container = styled.div`
     gap: 1.6rem;
 
     > button {
-      width: 9.2rem;
-      height: 4.8rem;
+      max-width: 9.2rem;
+      max-height: 4.8rem;
     }
   }
 
@@ -81,5 +84,47 @@ export const Container = styled.div`
 
     background: transparent;
     border: none;
+  }
+
+  @media ${DEVICE_TYPE.MOBILE} {
+    > img {
+      max-width: 8.8rem;
+      max-height: 8.8rem;
+    }
+
+    > h1 {
+      text-align: center;
+
+      ${FONTS_TYPE["POPPINS/100-MEDIUM"]}
+    }
+
+    > h2 {
+      color: ${({ theme }) => theme.COLORS.CAKE_200};
+      text-align: center;
+
+      ${FONTS_TYPE["ROBOTO/SMALL-REGULAR"]}
+    }
+
+    > div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.6rem;
+
+      > button {
+        width: 9.2rem;
+        max-height: 3.2rem;
+      }
+    }
+
+    > button {
+      > svg {
+        width: 2.4rem;
+        height: 2.4rem;
+
+        top: 1.6rem;
+        right: 1.6rem;
+      }
+    }
   }
 `;

@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { api } from "../../services/api/axios/axiosConfig";
 import { useAuth } from "../../hooks/auth";
 import { useOrders } from "../../hooks/useOrders";
+import { useMediaQuery } from "../../hooks/useMediaQuery";
+import { DEVICE_TYPE } from "../../styles/deviceBreakpoints";
 
 import { Container } from "./styles";
 
@@ -14,6 +16,7 @@ import IconHeart from "../../assets/icons/Heart.svg?react";
 import IconPencil from "../../assets/icons/Pencil.svg?react";
 
 export function CardFood({ dataFood = {} }) {
+  const isMobile = useMediaQuery(DEVICE_TYPE.MOBILE);
   const navigate = useNavigate();
   const { isAdministrator } = useAuth();
   const { handleAddOrder } = useOrders();
@@ -50,7 +53,7 @@ export function CardFood({ dataFood = {} }) {
     <Container>
       <img src={imageFood} alt="Prato" />
       <h1>{dataFood.name} &gt; </h1>
-      <p>{dataFood.description}</p>
+      {!isMobile && <p>{dataFood.description}</p>}
       <h2>R$ {dataFood.price.replace(".", ",")}</h2>
       <div>
         <Counter

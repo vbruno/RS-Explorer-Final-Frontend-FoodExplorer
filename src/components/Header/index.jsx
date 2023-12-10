@@ -1,17 +1,26 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useResolvedPath } from "react-router-dom";
-import { Container } from "./styles";
+import {
+  Container,
+  ButtonLogo,
+  ButtonLogout,
+  ButtonMenu,
+  ButtonOrder,
+} from "./styles";
 
 import Logo from "../../assets/logo.svg?react";
 import IconSignOut from "../../assets/icons/SignOut.svg?react";
 import { Search } from "./components/Search";
-import { Button } from "../Button";
 
-import IconOrder from "../../assets/icons/Receipt.svg?react";
+import IconOrder from "./assets/icons/Receipt.svg?react";
+import IconMenu from "./assets/icons/Menu.svg?react";
 
 import { useAuth } from "../../hooks/auth";
+import { useMediaQuery } from "../../hooks/useMediaQuery";
+import { DEVICE_TYPE } from "../../styles/deviceBreakpoints";
 
 export function Header() {
+  const isMobile = useMediaQuery(DEVICE_TYPE.MOBILE);
   const navigate = useNavigate();
   const { pathname } = useResolvedPath();
   const { signOut, isAdministrator } = useAuth();
@@ -21,6 +30,12 @@ export function Header() {
   useEffect(() => {
     isAdministrator() ? setIsAdminState(true) : setIsAdminState(false);
   }, [isAdministrator]);
+
+  useEffect(() => {
+    const test = window.matchMedia(DEVICE_TYPE.MOBILE);
+
+    console.log(test);
+  }, []);
 
   function handleNewDish() {
     if (pathname === "/newDish") return;
@@ -40,27 +55,46 @@ export function Header() {
 
   return (
     <Container $isAdmin={isAdminState}>
-      <div>
-        <button onClick={() => navigate("/")}>
-          {" "}
-          <Logo />
-          <div>
-            <h1>food explorer</h1>
-            <p>admin</p>
-          </div>
-        </button>
-        <Search />
-        {isAdminState ? (
-          <Button onClick={handleNewDish}>Novo prato</Button>
-        ) : (
-          <Button onClick={handleOrders} icon={IconOrder}>
-            Pedidos (0)
-          </Button>
-        )}
-        <button onClick={handleSignOut}>
-          <IconSignOut />
-        </button>
-      </div>
+      {isMobile && (
+        <div>
+          <ButtonMenu type="button">
+            <IconMenu />
+          </ButtonMenu>
+          <ButtonLogo onClick={() => navigate("/")}>
+            {" "}
+            <Logo />
+            <div>
+              <h1>food explorer</h1>
+              <p>admin</p>
+            </div>
+          </ButtonLogo>
+          <ButtonOrder type="button">
+            <IconOrder />
+          </ButtonOrder>
+        </div>
+      )}
+      {!isMobile && (
+        <div>
+          <ButtonLogo onClick={() => navigate("/")}>
+            <Logo />
+            <div>
+              <h1>food explorer</h1>
+              <p>admin</p>
+            </div>
+          </ButtonLogo>
+          <Search />
+          {isAdminState ? (
+            <ButtonOrder onClick={handleNewDish}>Novo prato</ButtonOrder>
+          ) : (
+            <ButtonOrder onClick={handleOrders} icon={IconOrder}>
+              Pedidos (0)
+            </ButtonOrder>
+          )}
+          <ButtonLogout onClick={handleSignOut}>
+            <IconSignOut />
+          </ButtonLogout>
+        </div>
+      )}
     </Container>
   );
 }

@@ -5,3 +5,8 @@ export const DEVICE_BREAKPOINTS = {
   LG: "1024px",
   XL: "1280px",
 };
+
+export const DEVICE_TYPE = {
+  MOBILE: `(max-width: ${DEVICE_BREAKPOINTS.MD})`,
+  DESKTOP: `(max-width: ${DEVICE_BREAKPOINTS.LG})`,
+};
