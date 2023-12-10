@@ -31,12 +31,6 @@ export function Header() {
     isAdministrator() ? setIsAdminState(true) : setIsAdminState(false);
   }, [isAdministrator]);
 
-  useEffect(() => {
-    const test = window.matchMedia(DEVICE_TYPE.MOBILE);
-
-    console.log(test);
-  }, []);
-
   function handleNewDish() {
     if (pathname === "/newDish") return;
     isAdminState ? navigate("/newDish") : alert("Você não é administrador");
@@ -54,13 +48,13 @@ export function Header() {
   }
 
   return (
-    <Container $isAdmin={isAdminState}>
+    <Container>
       {isMobile && (
         <div>
           <ButtonMenu type="button">
             <IconMenu />
           </ButtonMenu>
-          <ButtonLogo onClick={() => navigate("/")}>
+          <ButtonLogo onClick={() => navigate("/")} $isAdmin={isAdminState}>
             {" "}
             <Logo />
             <div>
@@ -68,9 +62,11 @@ export function Header() {
               <p>admin</p>
             </div>
           </ButtonLogo>
-          <ButtonOrder type="button">
-            <IconOrder />
-          </ButtonOrder>
+          {!isAdminState && (
+            <ButtonOrder type="button">
+              <IconOrder />
+            </ButtonOrder>
+          )}
         </div>
       )}
       {!isMobile && (

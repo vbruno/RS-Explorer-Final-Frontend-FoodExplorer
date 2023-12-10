@@ -24,7 +24,7 @@ export const Container = styled.header`
 `;
 
 export const ButtonLogo = styled.button`
-  width: fit-content;
+  width: 100%;
 
   background: transparent;
   border: none;
@@ -41,6 +41,9 @@ export const ButtonLogo = styled.button`
   }
 
   > div {
+    display: flex;
+    align-items: center;
+
     h1 {
       display: flex;
       flex-direction: row;
@@ -71,7 +74,7 @@ export const ButtonLogo = styled.button`
 
       /* Roboto/Smallest regular */
       font-family: Roboto;
-      font-size: 12px;
+      font-size: 1.2rem;
       font-style: normal;
       font-weight: 400;
       line-height: 160%; /* 19.2px */
@@ -89,9 +92,8 @@ export const ButtonLogo = styled.button`
       align-items: center;
       justify-content: space-between;
 
-      /* gap: 3.2rem; */
-
-      h1 {
+      gap: 1rem;
+      */ h1 {
         /* width: 18.6rem; */
 
         display: flex;
@@ -105,6 +107,17 @@ export const ButtonLogo = styled.button`
         font-style: normal;
         font-weight: 700;
         line-height: normal;
+      }
+
+      p {
+        margin-top: 0;
+
+        /* Roboto/Smallest regular */
+        font-family: Roboto;
+        font-size: 1.6rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 160%; /* 19.2px */
       }
     }
   }
