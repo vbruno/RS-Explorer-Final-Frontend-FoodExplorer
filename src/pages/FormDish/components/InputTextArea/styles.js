@@ -14,22 +14,22 @@ export const Container = styled.div`
 
     /* Roboto/Small regular */
     font-family: Roboto;
-    font-size: 16px;
+    font-size: 1.6rem;
     font-style: normal;
     font-weight: 400;
     line-height: 100%; /* 16px */
   }
 
   > textarea {
-    border-radius: 8px;
+    border-radius: 0.8rem;
     background: ${({ theme }) => theme.COLORS.DARK_800};
     border: none;
 
     display: flex;
     max-width: 100%;
-    padding: 14px;
+    padding: 1.4rem;
     align-items: flex-start;
-    gap: 14px;
+    gap: 1.4rem;
     align-self: stretch;
 
     resize: vertical;
@@ -38,7 +38,7 @@ export const Container = styled.div`
 
     /* Roboto/Small regular */
     font-family: Roboto;
-    font-size: 16px;
+    font-size: 1.6rem;
     font-style: normal;
     font-weight: 400;
     line-height: 100%; /* 16px */

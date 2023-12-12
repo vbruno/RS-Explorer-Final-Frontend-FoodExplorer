@@ -4,6 +4,7 @@ import { Tag } from "./components/Tag";
 import { Button, Counter } from "../../components";
 
 import CareLeft from "../../assets/icons/CareLeft.svg?react";
+import IconOrder from "../../assets/icons/Receipt.svg?react";
 
 import imgPratoSalada from "../../assets/dishes/Mask_group-1.png";
 
@@ -32,7 +33,7 @@ export function Dish() {
           </Tags>
           <div>
             <Counter />
-            <Button> incluir R$ 25,00</Button>
+            <Button icon={IconOrder}> pedir R$ 25,00</Button>
           </div>
         </div>
       </div>

@@ -15,7 +15,7 @@ export const Container = styled.div`
 
     /* Roboto/Small regular */
     font-family: "Roboto";
-    font-size: 16px;
+    font-size: 1.6rem;
     font-style: normal;
     font-weight: 400;
     line-height: 100%; /* 16px */
@@ -25,13 +25,13 @@ export const Container = styled.div`
     display: flex;
     width: 100%;
     /* width: 348px; */
-    height: 48px;
-    padding: 12px 14px;
+    height: 4.8rem;
+    padding: 1.2rem 1.4rem;
     justify-content: center;
     align-items: center;
-    gap: 14px;
+    gap: 1.4rem;
 
-    border-radius: 8px;
+    border-radius: 0.8rem;
     border: none;
     background: ${({ theme }) => theme.COLORS.DARK_800};
 
@@ -39,7 +39,7 @@ export const Container = styled.div`
 
     /* Roboto/Small regular */
     font-family: "Roboto";
-    font-size: 16px;
+    font-size: 1.6rem;
     font-style: normal;
     font-weight: 400;
     line-height: 100%; /* 16px */

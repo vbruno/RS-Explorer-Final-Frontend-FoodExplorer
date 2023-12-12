@@ -2,11 +2,11 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
-  padding: 4px 8px;
+  padding: 0.4rem 0.8rem;
   justify-content: center;
   align-items: center;
 
-  border-radius: 5px;
+  border-radius: 0.5rem;
   background: ${({ theme }) => theme.COLORS.DARK_1000};
 
   span {
@@ -15,9 +15,9 @@ export const Container = styled.div`
 
     /* Poppins/100-medium */
     font-family: Poppins;
-    font-size: 14px;
+    font-size: 1.4rem;
     font-style: normal;
     font-weight: 500;
-    line-height: 24px; /* 171.429% */
+    line-height: 2.4rem; /* 171.429% */
   }
 `;

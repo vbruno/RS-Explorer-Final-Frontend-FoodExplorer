@@ -14,7 +14,7 @@ export const Container = styled.div`
 
     /* Roboto/Small regular */
     font-family: "Roboto";
-    font-size: 16px;
+    font-size: 1.6rem;
     font-style: normal;
     font-weight: 400;
     line-height: 100%; /* 16px */
@@ -29,11 +29,11 @@ export const Container = styled.div`
     justify-content: flex-start;
     gap: 1.6rem;
 
-    height: 48px;
-    padding: 4px 8px;
+    height: 4.8rem;
+    padding: 0.4rem 0.8rem;
     align-self: stretch;
 
-    border-radius: 8px;
+    border-radius: 0.8rem;
     background: ${({ theme }) => theme.COLORS.DARK_800};
   }
 `;

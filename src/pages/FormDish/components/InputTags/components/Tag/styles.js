@@ -3,12 +3,12 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   /* height: 32px; */
-  padding: 4px 16px;
+  padding: 0.4rem 1.6rem;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
 
-  border-radius: 8px;
+  border-radius: 0.8rem;
   background: ${({ theme, $isNew }) =>
     $isNew ? "transparent" : theme.COLORS.LIGHT_600};
   border: ${({ theme, $isNew }) =>
@@ -25,10 +25,10 @@ export const Container = styled.div`
 
     /* Poppins/100-medium */
     font-family: Poppins;
-    font-size: 14px;
+    font-size: 1.4rem;
     font-style: normal;
     font-weight: 500;
-    line-height: 24px; /* 171.429% */
+    line-height: 2.4rem; /* 171.429% */
 
     text-transform: capitalize;
   }
@@ -41,8 +41,8 @@ export const Container = styled.div`
   }
 
   svg {
-    width: 8px;
-    height: 8px;
+    width: 0.8rem;
+    height: 0.8rem;
 
     &:hover {
       path {

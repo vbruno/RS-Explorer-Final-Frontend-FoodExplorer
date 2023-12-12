@@ -36,7 +36,7 @@ export const router = createBrowserRouter(
           }
         >
           <Route path="/" element={<Home />} />
-          <Route path="/dish" element={<Dish />} />
+          <Route path="/dish/:id" element={<Dish />} />
           <Route path="/ordersAndPay" element={<OrderAndPay />} />
           <Route path="/" element={<AdminRoute />}>
             <Route path="/newDish" element={<FormDish />} />

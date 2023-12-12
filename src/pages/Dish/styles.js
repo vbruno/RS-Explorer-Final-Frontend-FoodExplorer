@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { DEVICE_TYPE } from "../../styles/deviceBreakpoints";
 
 export const Container = styled.div`
   width: 100%;
@@ -12,8 +13,8 @@ export const Container = styled.div`
     margin-bottom: 4rem;
 
     svg {
-      width: 40px;
-      height: 24px;
+      width: 4rem;
+      height: 2.4rem;
 
       path {
         fill: ${({ theme }) => theme.COLORS.LIGHT_100};
@@ -25,7 +26,7 @@ export const Container = styled.div`
 
       /* Poppins/300-bold */
       font-family: "Poppins";
-      font-size: 24px;
+      font-size: 2.4rem;
       font-style: normal;
       font-weight: 700;
       line-height: 140%; /* 33.6px */
@@ -56,7 +57,7 @@ export const Container = styled.div`
 
         /* Poppins/500-medium */
         font-family: Poppins;
-        font-size: 40px;
+        font-size: 4rem;
         font-style: normal;
         font-weight: 500;
         line-height: 140%; /* 56px */
@@ -67,7 +68,7 @@ export const Container = styled.div`
 
         /* Poppins/300-regular */
         font-family: Poppins;
-        font-size: 24px;
+        font-size: 2.4rem;
         font-style: normal;
         font-weight: 400;
         line-height: 140%; /* 33.6px */
@@ -81,11 +82,74 @@ export const Container = styled.div`
       }
     }
   }
+
+  @media ${DEVICE_TYPE.MOBILE} {
+    padding: 0 5.6rem;
+
+    > header {
+      margin-top: 2.4rem;
+      margin-bottom: 4rem;
+
+      svg {
+        width: 4rem;
+        height: 2.4rem;
+
+        path {
+          fill: ${({ theme }) => theme.COLORS.LIGHT_100};
+        }
+      }
+
+      h1 {
+        color: ${({ theme }) => theme.COLORS.LIGHT_300};
+
+        /* Poppins/300-bold */
+        font-family: "Poppins";
+        font-size: 3.4rem;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 140%; /* 33.6px */
+      }
+    }
+
+    > div {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      > div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2.4rem;
+
+        h1 {
+          font-size: 2.7rem;
+        }
+
+        h2 {
+          font-size: 1.6rem;
+          text-align: center;
+        }
+
+        > div:nth-child(4) {
+          width: 100%;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: center;
+          gap: 3.3rem;
+        }
+      }
+    }
+  }
 `;
 
 export const Tags = styled.div`
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   align-items: center;
+  justify-content: space-between;
   gap: 1.2rem;
 `;
