@@ -4,7 +4,7 @@ import { DEVICE_TYPE } from "../../styles/deviceBreakpoints";
 export const Container = styled.div`
   width: 100%;
 
-  > header {
+  > a > header {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -138,7 +138,15 @@ export const Container = styled.div`
           flex-direction: row;
           align-items: center;
           justify-content: center;
-          gap: 3.3rem;
+          gap: 2.6rem;
+
+          > div {
+            width: 25%;
+          }
+
+          > button {
+            font-size: 1.4rem;
+          }
         }
       }
     }

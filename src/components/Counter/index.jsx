@@ -9,7 +9,7 @@ export function Counter({ quantity = 0, onIncrement, onDecrement }) {
       <button onClick={onDecrement}>
         <IconMinus />
       </button>
-      <span>{quantity}</span>
+      <span>{("00" + quantity).slice(-2)}</span>
       <button onClick={onIncrement}>
         <IconPlus />
       </button>

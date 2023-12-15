@@ -46,12 +46,18 @@ export function CardFood({ dataFood = {} }) {
   }
 
   function handleEditFood() {
+    navigate(`/dish/edit/${dataFood.id}`);
+  }
+
+  function handleDishDetail() {
     navigate(`/dish/${dataFood.id}`);
   }
 
   return (
     <Container>
-      <img src={imageFood} alt="Prato" />
+      <button onClick={handleDishDetail}>
+        <img src={imageFood} alt="Prato" />
+      </button>
       <h1>{dataFood.name} &gt; </h1>
       {!isMobile && <p>{dataFood.description}</p>}
       <h2>R$ {dataFood.price.replace(".", ",")}</h2>

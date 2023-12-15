@@ -26,7 +26,7 @@ export const Container = styled.div`
 
     /* Roboto/Big bold */
     font-family: "Roboto";
-    font-size: 2rem;
+    font-size: 2.3rem;
     font-style: normal;
     font-weight: 700;
     line-height: 160%; /* 32px */

@@ -1,9 +1,9 @@
 import { Container } from "./styles";
 
-export function Tag() {
+export function Tag({ children }) {
   return (
     <Container>
-      <span>alface</span>
+      <span>{children}</span>
     </Container>
   );
 }

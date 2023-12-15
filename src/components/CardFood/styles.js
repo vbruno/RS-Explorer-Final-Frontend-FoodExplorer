@@ -20,7 +20,7 @@ export const Container = styled.div`
 
   position: relative;
 
-  > img {
+  > button > img {
     max-width: 17.6rem;
     max-height: 17.6rem;
   }
