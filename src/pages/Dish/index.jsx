@@ -1,11 +1,6 @@
 import { api } from "../../services/api/axios/axiosConfig";
 import { useState, useEffect } from "react";
-import {
-  useNavigate,
-  useResolvedPath,
-  useParams,
-  Link,
-} from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";
 
 import { dishService } from "../../services/api/dish/dishService";
 import { useAuth } from "../../hooks/auth";
@@ -18,11 +13,8 @@ import { Button, Counter } from "../../components";
 import CareLeft from "../../assets/icons/CareLeft.svg?react";
 import IconOrder from "../../assets/icons/Receipt.svg?react";
 
-import imgPratoSalada from "../../assets/dishes/Mask_group-1.png";
-
 export function Dish() {
   const navigate = useNavigate();
-  const { pathname } = useResolvedPath();
   const { id } = useParams();
   const { isAdministrator } = useAuth();
 
@@ -36,6 +28,7 @@ export function Dish() {
   });
 
   const [isAdminState, setIsAdminState] = useState(false);
+  const [quantity, setQuantity] = useState(0);
 
   useEffect(() => {
     if (!id) return;
@@ -93,7 +86,19 @@ export function Dish() {
               <Button onClick={handleEditDish}>Editar prato</Button>
             ) : (
               <>
-                <Counter />
+                <Counter
+                  quantity={quantity}
+                  onIncrement={() =>
+                    setQuantity((prevState) =>
+                      prevState >= 99 ? 99 : (prevState += 1)
+                    )
+                  }
+                  onDecrement={() =>
+                    setQuantity((prevState) =>
+                      prevState <= 0 ? 0 : (prevState -= 1)
+                    )
+                  }
+                />
                 <Button onClick={handleLog} icon={IconOrder}>
                   {" "}
                   pedir - R$ ${formData.price.replace(".", ",")}

@@ -19,5 +19,7 @@ export const Container = styled.div`
     font-style: normal;
     font-weight: 500;
     line-height: 2.4rem; /* 171.429% */
+
+    text-transform: capitalize;
   }
 `;

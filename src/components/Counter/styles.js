@@ -7,7 +7,19 @@ export const Container = styled.div`
 
   gap: 1.4rem;
 
+  label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.4rem;
+    height: 2.4rem;
+
+    cursor: pointer;
+  }
+
   button {
+    display: block;
+
     max-width: 2.4rem;
     max-height: 2.4rem;
 
