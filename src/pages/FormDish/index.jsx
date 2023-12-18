@@ -180,7 +180,7 @@ export function FormDish() {
           value={formData.description}
           onChange={(e) => handleEditFormData(e, "description")}
         />
-        {pathname === "newDish" ? (
+        {pathname === "/newDish" ? (
           <>
             <Button onClick={handleAddDish}>Adicionar Prato</Button>
           </>

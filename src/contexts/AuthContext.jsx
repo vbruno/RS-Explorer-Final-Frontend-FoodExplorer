@@ -72,7 +72,12 @@ export function AuthProvider({ children }) {
     //   signOut();
     // }
 
-    // loginService.connection().catch(signOut());
+    loginService.connection().catch(
+      (error) => {
+        throw alert(error.message);
+      },
+      [loginService]
+    );
 
     if (storageToken && storageUser) {
       const decodedToken = jwtDecode(storageToken);

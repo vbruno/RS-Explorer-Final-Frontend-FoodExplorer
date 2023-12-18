@@ -6,6 +6,7 @@ import {
   ButtonLogout,
   ButtonMenu,
   ButtonOrder,
+  Menu,
 } from "./styles";
 
 import Logo from "../../assets/logo.svg?react";
@@ -14,6 +15,7 @@ import { Search } from "./components/Search";
 
 import IconOrder from "./assets/icons/Receipt.svg?react";
 import IconMenu from "./assets/icons/Menu.svg?react";
+import IconClose from "./assets/icons/Close.svg?react";
 
 import { useAuth } from "../../hooks/auth";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
@@ -26,6 +28,12 @@ export function Header() {
   const { signOut, isAdministrator } = useAuth();
 
   const [isAdminState, setIsAdminState] = useState(false);
+
+  const [openMenu, setOpenMenu] = useState(false);
+
+  function handleMenu() {
+    setOpenMenu(!openMenu);
+  }
 
   useEffect(() => {
     isAdministrator() ? setIsAdminState(true) : setIsAdminState(false);
@@ -51,7 +59,7 @@ export function Header() {
     <Container>
       {isMobile && (
         <div>
-          <ButtonMenu type="button">
+          <ButtonMenu type="button" onClick={handleMenu}>
             <IconMenu />
           </ButtonMenu>
           <ButtonLogo onClick={() => navigate("/")} $isAdmin={isAdminState}>
@@ -71,7 +79,7 @@ export function Header() {
       )}
       {!isMobile && (
         <div>
-          <ButtonLogo onClick={() => navigate("/")}>
+          <ButtonLogo onClick={() => navigate("/")} $isAdmin={isAdminState}>
             <Logo />
             <div>
               <h1>food explorer</h1>
@@ -90,6 +98,22 @@ export function Header() {
             <IconSignOut />
           </ButtonLogout>
         </div>
+      )}
+      {openMenu && isMobile && (
+        <Menu>
+          <header>
+            <button type="button" onClick={handleMenu}>
+              <IconClose />
+              <h1>Menu</h1>
+            </button>
+          </header>
+          <main>
+            <Search />
+            <button type="button" onClick={handleSignOut}>
+              <span>sair</span>
+            </button>
+          </main>
+        </Menu>
       )}
     </Container>
   );

@@ -62,12 +62,18 @@ export function CardFood({ dataFood = {} }) {
       {!isMobile && <p>{dataFood.description}</p>}
       <h2>R$ {dataFood.price.replace(".", ",")}</h2>
       <div>
-        <Counter
-          quantity={counter}
-          onIncrement={handleIncrement}
-          onDecrement={handleDecrement}
-        />
-        <Button onClick={handleAddFood}>incluir</Button>
+        {isAdministrator() ? (
+          <Button onClick={handleEditFood}>Editar</Button>
+        ) : (
+          <>
+            <Counter
+              quantity={counter}
+              onIncrement={handleIncrement}
+              onDecrement={handleDecrement}
+            />
+            <Button onClick={handleAddFood}>incluir</Button>
+          </>
+        )}
       </div>
       {isAdministrator() ? (
         <button onClick={handleEditFood}>

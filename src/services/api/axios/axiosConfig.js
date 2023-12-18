@@ -3,7 +3,7 @@ import { errorInterceptor } from "./interceptors/ErrorInterceptor";
 import { responseInterceptor } from "./interceptors/ResponseInterceptor";
 
 const port = 3333;
-const URL_BASE = `http://localhost:${port}`;
+const URL_BASE = `http://192.168.50.134:${port}`;
 
 export const api = axios.create({
   baseURL: URL_BASE,
