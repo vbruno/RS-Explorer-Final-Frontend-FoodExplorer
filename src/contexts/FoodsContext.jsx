@@ -21,14 +21,10 @@ export function FoodsProvider({ children }) {
   }
 
   useEffect(() => {
-    if (!search) {
-      getFoods();
-    }
-
-    if (!search || search.length < 3) return;
-
     debounce(() => {
-      getFoods(search);
+      if (!search) getFoods();
+      if (!search || search.length < 3) return;
+      if (search.length >= 3) getFoods(search);
     });
   }, [debounce, search]);
 
