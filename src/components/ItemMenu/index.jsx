@@ -19,7 +19,7 @@ export function ItemMenu({ title, dataCardFood = [] }) {
             slidesPerView={isMobile ? 2 : 3}
             // centeredSlides={true}
             spaceBetween={12}
-            loop={isMobile ? false : true}
+            // loop={isMobile ? false : true}
             navigation={isMobile ? false : true}
             modules={[Navigation]}
           >
