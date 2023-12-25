@@ -18,18 +18,21 @@ import IconMenu from "./assets/icons/Menu.svg?react";
 import IconClose from "./assets/icons/Close.svg?react";
 
 import { useAuth } from "../../hooks/auth";
+import { useOrders } from "../../hooks/useOrders";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { DEVICE_TYPE } from "../../styles/deviceBreakpoints";
 
 export function Header() {
   const isMobile = useMediaQuery(DEVICE_TYPE.MOBILE);
   const navigate = useNavigate();
+  const { orders } = useOrders();
   const { pathname } = useResolvedPath();
   const { signOut, isAdministrator } = useAuth();
 
   const [isAdminState, setIsAdminState] = useState(false);
 
   const [openMenu, setOpenMenu] = useState(false);
+  const [quantityOrders, setQuantityOrders] = useState(0);
 
   function handleMenu() {
     setOpenMenu(!openMenu);
@@ -55,6 +58,10 @@ export function Header() {
     signOut();
   }
 
+  useEffect(() => {
+    setQuantityOrders(orders.length);
+  }, [orders]);
+
   return (
     <Container>
       {isMobile && (
@@ -73,6 +80,7 @@ export function Header() {
           {!isAdminState && (
             <ButtonOrder type="button">
               <IconOrder />
+              <span>{quantityOrders}</span>
             </ButtonOrder>
           )}
         </div>
@@ -91,7 +99,7 @@ export function Header() {
             <ButtonOrder onClick={handleNewDish}>Novo prato</ButtonOrder>
           ) : (
             <ButtonOrder onClick={handleOrders} icon={IconOrder}>
-              Pedidos (0)
+              Pedidos ({quantityOrders})
             </ButtonOrder>
           )}
           <ButtonLogout onClick={handleSignOut}>

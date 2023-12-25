@@ -133,6 +133,7 @@ export const ButtonMenu = styled.button`
 
 export const ButtonOrder = styled(Button)`
   max-width: 20rem;
+  position: relative;
 
   @media ${DEVICE_TYPE.MOBILE} {
     padding: 0;
@@ -147,6 +148,26 @@ export const ButtonOrder = styled(Button)`
     &:disabled {
       background: transparent;
       cursor: not-allowed;
+    }
+
+    > span {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 2.5rem;
+      height: 2.5rem;
+      background: ${({ theme }) => theme.COLORS.TOMATO_100};
+      border-radius: 50%;
+
+      margin-top: -1rem;
+      margin-right: -1rem;
+
+      color: ${({ theme }) => theme.COLORS.LIGHT_100};
+      font-family: "Poppins";
+      font-size: 1.4rem;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 2.4rem; /* 33.6px */
     }
   }
 `;

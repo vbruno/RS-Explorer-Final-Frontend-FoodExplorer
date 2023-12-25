@@ -4,6 +4,7 @@ import { useNavigate, useParams, Link } from "react-router-dom";
 
 import { dishService } from "../../services/api/dish/dishService";
 import { useAuth } from "../../hooks/auth";
+import { useOrders } from "../../hooks/useOrders";
 
 import { Container, Tags } from "./styles";
 
@@ -26,15 +27,36 @@ export function Dish() {
     image: null,
     tags: [],
   });
+  const { handleAddOrder } = useOrders();
 
   const [isAdminState, setIsAdminState] = useState(false);
   const [quantity, setQuantity] = useState(0);
+
+  function handleAddFood() {
+    if (quantity === 0) return;
+    setQuantity(0);
+
+    const order = {
+      id: formData.id,
+      name: formData.name,
+      price: formData.price,
+      quantity: quantity,
+      total: (quantity * formData.price).toFixed(2),
+    };
+
+    handleAddOrder(order);
+  }
+
+  function handleEditDish() {
+    navigate(`/dish/edit/${id}`);
+  }
 
   useEffect(() => {
     if (!id) return;
 
     dishService.getDishById(id).then((res) => {
       setFormData({
+        id: res.id,
         name: res.name,
         category:
           res.type === "snack"
@@ -49,15 +71,6 @@ export function Dish() {
       });
     });
   }, [id]);
-
-  function handleLog() {
-    // console.log(formData);
-    console.log(`${api.defaults.baseURL}/image/${formData.image}`);
-  }
-
-  function handleEditDish() {
-    navigate(`/dish/edit/${id}`);
-  }
 
   useEffect(() => {
     isAdministrator() ? setIsAdminState(true) : setIsAdminState(false);
@@ -99,7 +112,7 @@ export function Dish() {
                     )
                   }
                 />
-                <Button onClick={handleLog} icon={IconOrder}>
+                <Button onClick={handleAddFood} icon={IconOrder}>
                   {" "}
                   pedir - R$ ${formData.price.replace(".", ",")}
                 </Button>
