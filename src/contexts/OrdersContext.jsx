@@ -15,6 +15,7 @@ export function OrdersProvider({ children }) {
         id: uuidV4().split("-")[0],
         idDish: dataOrder.id,
         name: dataOrder.name,
+        image: dataOrder.image,
         price: +dataOrder.price,
         quantity: dataOrder.quantity,
         total: +dataOrder.total,
@@ -22,8 +23,14 @@ export function OrdersProvider({ children }) {
     ]);
   }
 
+  function handleRemoveOrder(id) {
+    setOrders((prevState) => prevState.filter((order) => order.id !== id));
+  }
+
   return (
-    <OrdersContext.Provider value={{ handleAddOrder, orders }}>
+    <OrdersContext.Provider
+      value={{ handleAddOrder, handleRemoveOrder, orders }}
+    >
       {children}
     </OrdersContext.Provider>
   );

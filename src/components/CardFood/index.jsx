@@ -39,6 +39,7 @@ export function CardFood({ dataFood = {} }) {
     handleAddOrder({
       id: dataFood.id,
       name: dataFood.name,
+      image: dataFood.image,
       price: dataFood.price,
       quantity: counter,
       total: (counter * dataFood.price).toFixed(2),
