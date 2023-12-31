@@ -17,6 +17,10 @@ os conhecimentos adquiridos no curso da Rocketseat na modalidade EXPLORER.
 
 * [GitHub](https://github.com/vbruno/RS-Explorer-Final-Frontend-FoodExplorer)
 
+## Deploy
+
+* [Netlify](https://foodexplorer-bsv.netlify.app/) - Como o projeto está hospedado no plano gratuito, pode ser que demore alguns segundos para carregar. Caso isso aconteça, basta atualizar a página.
+
 ## 🛠 Tecnologias
 
 As seguintes ferramentas foram usadas na construção do projeto:
@@ -40,10 +44,12 @@ e um software para testar as rotas como [Insomnia](https://insomnia.rest/downloa
 
 ### 🎲 Acesso ao usuário administrador
 
-### Autor
+Para acessar o usuário administrador, utilize as credenciais abaixo.
 
 * Email: <admin@foodexplorer.com.br>
 * Senha: admin@123456
+
+### Autor
 
 ---
 <br>
