@@ -38,7 +38,12 @@ Antes de começar, você vai precisar ter instalado em sua máquina as seguintes
 Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/)
 e um software para testar as rotas como [Insomnia](https://insomnia.rest/download)
 
+### 🎲 Acesso ao usuário administrador
+
 ### Autor
+
+* Email: <admin@foodexplorer.com.br>
+* Senha: admin@123456
 
 ---
 <br>

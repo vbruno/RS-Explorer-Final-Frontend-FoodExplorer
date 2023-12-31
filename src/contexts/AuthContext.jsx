@@ -68,9 +68,9 @@ export function AuthProvider({ children }) {
     const storageUser = localStorage.getItem("@FoodExplorer:user");
     const storageToken = localStorage.getItem("@FoodExplorer:token");
 
-    // if (!storageToken || !storageUser) {
-    //   signOut();
-    // }
+    if (!storageToken || !storageUser) {
+      signOut();
+    }
 
     loginService.connection().catch(
       (error) => {
@@ -98,7 +98,6 @@ export function AuthProvider({ children }) {
       value={{
         signIn,
         signOut,
-        // updateProfile,
         user: data.user,
         isAuthenticated,
         isAdministrator,

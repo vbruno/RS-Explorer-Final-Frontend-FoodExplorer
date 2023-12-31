@@ -7,7 +7,7 @@ export function OrdersProvider({ children }) {
   const [orders, setOrders] = useState([]);
 
   function handleAddOrder(dataOrder) {
-    console.log(dataOrder);
+    // console.log(dataOrder);
 
     setOrders((prevState) => [
       ...prevState,
