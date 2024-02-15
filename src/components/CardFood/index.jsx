@@ -35,6 +35,8 @@ export function CardFood({ dataFood = {} }) {
   }
 
   function handleAddFood() {
+    if (counter === 0) return;
+
     setCounter(0);
     handleAddOrder({
       id: dataFood.id,
