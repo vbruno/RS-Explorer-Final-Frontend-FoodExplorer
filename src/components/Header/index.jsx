@@ -78,7 +78,7 @@ export function Header() {
             </div>
           </ButtonLogo>
           {!isAdminState && (
-            <ButtonOrder type="button">
+            <ButtonOrder type="button" onClick={handleOrders}>
               <IconOrder />
               <span>{quantityOrders}</span>
             </ButtonOrder>
