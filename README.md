@@ -30,7 +30,9 @@ os conhecimentos adquiridos no curso da Rocketseat na modalidade EXPLORER.
 
 ## Deploy
 
-* [Netlify](https://foodexplorer-bsv.netlify.app/) - Como o projeto está hospedado no plano gratuito, pode ser que demore alguns segundos para carregar. Caso isso aconteça, basta atualizar a página.
+* <a href="https://foodexplorer-bsv.netlify.app/" target="_blank">Netlify</a> -
+Como o projeto está hospedado no plano gratuito, pode ser que demore alguns
+segundos para carregar. Caso isso aconteça, basta atualizar a página.
 
 ## 🛠 Tecnologias
 
