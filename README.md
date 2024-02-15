@@ -6,6 +6,17 @@ Projeto para gerenciamento de um menu interativo para um restaurante fictício.
 
 No food explorer terá duas personas: o admin e o usuário;
 
+A persona admin poderá:
+
+* Visualizar os pratos cadastrados por categoria;
+* Cadastrar, editar, visualizar e excluir pratos;
+
+A persona usuário poderá:
+
+* Visualizar os pratos cadastrados por categoria;
+* Visualizar os detalhes de um prato específico;
+* Montar um pedido com os pratos disponíveis;
+
 Esse projeto foi desenvolvido com o intuito de colocar em prática
 os conhecimentos adquiridos no curso da Rocketseat na modalidade EXPLORER.
 
