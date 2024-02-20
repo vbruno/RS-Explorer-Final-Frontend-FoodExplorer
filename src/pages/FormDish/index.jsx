@@ -89,10 +89,11 @@ export function FormDish() {
 
     dishService
       .newDish(data)
-      .then((res) => {
-        console.log(res);
+      .then(() => {
+        // console.log(res);
         alert("Prato adicionado com sucesso!");
         navigate(-1);
+        navigate(0);
       })
       .catch((err) => {
         console.log(err);
@@ -101,13 +102,52 @@ export function FormDish() {
   }
 
   function handleEditDish() {
-    console.log(formData);
+    // console.log(formData);
+
+    const data = {
+      id: id,
+      name: formData.name.trim(),
+      category:
+        formData.category === "Refeição"
+          ? "snack"
+          : formData.category === "Sobremesa"
+          ? "dessert"
+          : "drink",
+      description: formData.description.trim(),
+      price: formData.price.toString().replace(",", "."),
+      ingredients: formData.tags.toString(),
+      image: formData.image,
+    };
+
+    // console.log(data);
+
+    dishService
+      .updateDish(data)
+      .then(() => {
+        alert("Prato atualizado com sucesso!");
+        navigate(-1);
+        navigate(0);
+      })
+      .catch((err) => {
+        console.log(err);
+        alert("Erro ao atualizar prato!");
+      });
   }
 
   function handleDeleteDish() {
-    console.log(formData);
+    // console.log(id);
 
-    console.log(typeof formData.image);
+    dishService
+      .deleteDish(id)
+      .then(() => {
+        alert("Prato excluído com sucesso!");
+        navigate("/");
+        navigate(0);
+      })
+      .catch((err) => {
+        console.log(err);
+        alert("Erro ao excluir prato!");
+      });
   }
 
   useEffect(() => {
@@ -123,7 +163,7 @@ export function FormDish() {
             ? "Sobremesa"
             : "Bebida",
         description: res.description,
-        price: res.price,
+        price: res.price.replace(".", ","),
         image: res.image,
         tags: res.ingredients.split(","),
       });

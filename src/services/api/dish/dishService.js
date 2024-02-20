@@ -30,23 +30,26 @@ async function newDish(dataDish) {
 }
 
 async function updateDish(dataDish) {
-  // Precisa testar
+  // console.log(dataDish);
+
   try {
-    const response = await api.put(`/foods/${dataDish.id}`, {
+    const response = await api.put(`/foods/update/${dataDish.id}`, {
+      id: dataDish.id,
       type: dataDish.category,
       name: dataDish.name,
       ingredients: dataDish.ingredients.toLowerCase(),
-      price: dataDish.price[0].replace(",", "."),
+      price: dataDish.price,
       description: dataDish.description,
-      image: "_",
+      image: dataDish.image,
     });
-    const dishReturn = response.data;
+
+    if (typeof dataDish.image === "string") return response.data;
 
     const fileUploadFormData = new FormData();
     fileUploadFormData.append("imageDish", dataDish.image);
 
     const resultUpload = await api.patch(
-      `/foods/uploadImageDish/${dishReturn.id}`,
+      `/foods/uploadImageDish/${dataDish.id}`,
       fileUploadFormData
     );
 
