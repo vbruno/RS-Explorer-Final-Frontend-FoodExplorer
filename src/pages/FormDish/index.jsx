@@ -93,7 +93,7 @@ export function FormDish() {
         // console.log(res);
         alert("Prato adicionado com sucesso!");
         navigate(-1);
-        navigate(0);
+        // navigate(0);
       })
       .catch((err) => {
         console.log(err);
@@ -126,7 +126,7 @@ export function FormDish() {
       .then(() => {
         alert("Prato atualizado com sucesso!");
         navigate(-1);
-        navigate(0);
+        // navigate(0);
       })
       .catch((err) => {
         console.log(err);
@@ -142,7 +142,7 @@ export function FormDish() {
       .then(() => {
         alert("Prato excluído com sucesso!");
         navigate("/");
-        navigate(0);
+        // navigate(0);
       })
       .catch((err) => {
         console.log(err);
