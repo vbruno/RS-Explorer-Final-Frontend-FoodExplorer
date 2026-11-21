@@ -1,83 +1,43 @@
-# Food Explorer (frontend)
+# Food Explorer — frontend
 
-## Description
+Interface de um restaurante fictício com catálogo de pratos, área de cliente e área de administração. Projeto final da trilha Explorer da Rocketseat.
 
-Projeto para gerenciamento de um menu interativo para um restaurante fictício.
+[Abrir a interface](https://foodexplorer-bsv.netlify.app/) · [Repositório da API](https://github.com/vbruno/RS-Explorer-Final-Backend-FoodExplorer) · [Layout no Figma](https://www.figma.com/community/file/1196874589259687769/food-explorer-v2)
 
-No food explorer terá duas personas: o admin e o usuário;
+## Funcionalidades
 
-A persona admin poderá:
+- Cadastro e autenticação de usuários.
+- Navegação por pratos e consulta dos detalhes de cada item.
+- Seleção de pratos e resumo do pedido.
+- Cadastro, edição e exclusão de pratos na área de administrador.
 
-* Visualizar os pratos cadastrados por categoria;
-* Cadastrar, editar, visualizar e excluir pratos;
+O frontend depende da [API do Food Explorer](https://github.com/vbruno/RS-Explorer-Final-Backend-FoodExplorer). A interface publicada pode abrir mesmo quando a API hospedada estiver indisponível; nesse caso, as funções que usam dados e autenticação não funcionarão.
 
-A persona usuário poderá:
+## Tecnologias
 
-* Visualizar os pratos cadastrados por categoria;
-* Visualizar os detalhes de um prato específico;
-* Montar um pedido com os pratos disponíveis;
+React, React Router, Styled Components, Axios, Swiper e Vite.
 
-Esse projeto foi desenvolvido com o intuito de colocar em prática
-os conhecimentos adquiridos no curso da Rocketseat na modalidade EXPLORER.
+## Executar localmente
 
-## Layout
+Com Node.js e npm instalados:
 
-* [Figma](https://www.figma.com/community/file/1196874589259687769/food-explorer-v2)
+```bash
+npm ci
+npm run dev
+```
 
-## Repositório
+Esse comando usa a API hospedada configurada em `src/services/api/axios/axiosConfig.js`. Para usar uma instância local da API em `http://localhost:3333`, inicie o [backend](https://github.com/vbruno/RS-Explorer-Final-Backend-FoodExplorer) e execute:
 
-* [GitHub - frontend](https://github.com/vbruno/RS-Explorer-Final-Frontend-FoodExplorer)
-* [GitHub - backend](https://github.com/vbruno/RS-Explorer-Final-Backend-FoodExplorer)
+```bash
+npm run dev:local
+```
 
-## Deploy
+Para gerar a versão de produção:
 
-* <a href="https://foodexplorer-bsv.netlify.app/" target="_blank">Netlify</a> -
-Como o projeto está hospedado no plano gratuito, pode ser que demore alguns
-segundos para carregar. Caso isso aconteça, basta atualizar a página.
+```bash
+npm run build
+```
 
-## 🛠 Tecnologias
+## Autor
 
-As seguintes ferramentas foram usadas na construção do projeto:
-
-* [React](https://pt-br.reactjs.org/)
-* [React Router Dom](https://reactrouter.com/web/guides/quick-start)
-* [Styled Components](https://styled-components.com/)
-* [Axios](https://axios-http.com/ptbr/docs/intro)
-* [React Icons](https://react-icons.github.io/react-icons/)
-* [Json Web Token](https://jwt.io/)
-
-### Pré-requisitos
-
-Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
-
-* [Git](https://git-scm.com)
-* [Node](https://nodejs.org/en/)
-
-Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/)
-e um software para testar as rotas como [Insomnia](https://insomnia.rest/download)
-
-### 🎲 Acesso ao usuário administrador
-
-Para acessar o usuário administrador, utilize as credenciais abaixo.
-
-* Email: <admin@foodexplorer.com.br>
-* Senha: admin@123456
-
-### Autor
-
----
-<br>
-<a href="https://github.com/vbruno/">
-  <img style="border-radius: 50%;"
-    src="https://github.com/vbruno.png"
-    width="100px;"
-  />
-  <br />
-</a>
-<sub><b>Bruno S Velho 🚀</b></sub>
-
-Feito com ❤️ por Bruno S Velho 👋🏽 Entre em contato!
-
-[![Linkedin Badge](https://img.shields.io/badge/-BrunoVelho-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/brunovelho/)](https://www.linkedin.com/in/brunovelho/)
-[![Instagram bagde](https://img.shields.io/badge/Bruno_S_Velho-E4405F?style=flat-square&logo=instagram&logoColor=white)](https://instagram.com/brunosvelho)
-[![Gmail Badge](https://img.shields.io/badge/-bruno.velho@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:bruno.velho@gmail.com)](mailto:bruno.velho@gmail.com)
+[Bruno S Velho](https://github.com/vbruno) · [LinkedIn](https://www.linkedin.com/in/brunovelho/)
